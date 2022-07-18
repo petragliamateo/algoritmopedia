@@ -19,6 +19,7 @@ const data = [
   { title: 'Inicio', goto: 'home', id: 1 },
   { title: '🏆 Copa Algoritmopedia', goto: 'copa', id: 2 },
   { title: '📚 Biblioteca', goto: 'biblioteca', id: 3 },
+  { title: '📝 Categorías', goto: 'categorias', id: 4 },
 ];
 
 function MenuModal({ setShowMenu }) {

@@ -3,7 +3,9 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { Home, Biblioteca, Copa } from '../screens';
+import {
+  Home, Biblioteca, Copa, Categorias,
+} from '../screens';
 import Header from '../components/Header';
 
 const Stack = createNativeStackNavigator();
@@ -15,6 +17,7 @@ export default function Navigation() {
         <Stack.Screen name="home" component={Home} />
         <Stack.Screen name="biblioteca" component={Biblioteca} />
         <Stack.Screen name="copa" component={Copa} />
+        <Stack.Screen name="categorias" component={Categorias} />
       </Stack.Navigator>
     </NavigationContainer>
   );
