@@ -2,7 +2,9 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import { Text } from 'react-native';
-import { useFonts, RobotoMono_400Regular, RobotoMono_700Bold } from '@expo-google-fonts/roboto-mono';
+import {
+  useFonts, RobotoMono_400Regular, RobotoMono_700Bold, RobotoMono_600SemiBold,
+} from '@expo-google-fonts/roboto-mono';
 
 export function Title({ children }) {
   useFonts({
@@ -47,6 +49,23 @@ export function Linked({ children }) {
         fontFamily: 'RobotoMono_700Bold',
         fontSize: 22,
         color: '#2F7EC8',
+      }}
+    >
+      {children}
+    </Text>
+  );
+}
+
+export function MiniText({ children }) {
+  useFonts({
+    RobotoMono_600SemiBold,
+  });
+  return (
+    <Text
+      style={{
+        fontFamily: 'RobotoMono_600SemiBold',
+        fontSize: 10,
+        color: '#6d6d6d',
       }}
     >
       {children}

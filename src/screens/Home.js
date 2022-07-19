@@ -1,39 +1,14 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
-  Image, Text, View, StyleSheet, TextInput, Pressable, ScrollView,
+  Text, View, StyleSheet, ScrollView, useWindowDimensions,
 } from 'react-native';
 import React from 'react';
 
 import { SubTitle, Title } from '../customComponents/TextComponents';
-import matecodigo from '../../assets/images/matecodigo.png';
+
+import MainScreen from '../containers/MainScreen';
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    paddingVertical: 35,
-    justifyContent: 'space-around',
-    height: '100%',
-  },
-  image: {
-    width: 110,
-    height: 110,
-    alignSelf: 'center',
-  },
-  input: {
-    alignSelf: 'center',
-    color: '#777777',
-    width: '100%',
-  },
-  inputContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderWidth: 1,
-    borderColor: '#777777',
-    width: '80%',
-    padding: 10,
-    alignSelf: 'center',
-  },
   horizontalScroller: {
     height: 80,
     backgroundColor: '#cccccc',
@@ -41,17 +16,16 @@ const styles = StyleSheet.create({
 });
 
 function Home() {
+  let { height } = useWindowDimensions();
+  height -= 60;
   return (
-    <View style={styles.container}>
-      <Title>
-        <Text>Entrena tu pensamiento lógico</Text>
-      </Title>
-      <Image style={styles.image} source={{ uri: matecodigo }} />
-      <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder="Buscar algoritmo" />
-        <Pressable>
-          <Text>Lupa</Text>
-        </Pressable>
+    <ScrollView>
+      <View style={{ height }}>
+        <MainScreen />
+      </View>
+
+      <View style={{ height, backgroundColor: '#2F7EC8' }}>
+        <Title><Text style={{ color: '#ffffff' }}>📝 Categorías</Text></Title>
       </View>
 
       <View>
@@ -64,7 +38,7 @@ function Home() {
           <View><SubTitle><Text>-Algoritmo 5-</Text></SubTitle></View>
         </ScrollView>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
