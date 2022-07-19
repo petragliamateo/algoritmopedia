@@ -39,6 +39,22 @@ export function SubTitle({ children }) {
   );
 }
 
+export function RegularText({ children }) {
+  useFonts({
+    RobotoMono_400Regular,
+  });
+  return (
+    <Text
+      style={{
+        fontFamily: 'RobotoMono_400Regular',
+        fontSize: 18,
+      }}
+    >
+      {children}
+    </Text>
+  );
+}
+
 export function Linked({ children }) {
   useFonts({
     RobotoMono_700Bold,
