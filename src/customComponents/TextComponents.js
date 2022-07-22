@@ -1,9 +1,11 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable camelcase */
 import React from 'react';
 import { Text } from 'react-native';
 import {
   useFonts, RobotoMono_400Regular, RobotoMono_700Bold, RobotoMono_600SemiBold,
+  RobotoMono_400Regular_Italic,
 } from '@expo-google-fonts/roboto-mono';
 
 export function Title({ children }) {
@@ -39,15 +41,23 @@ export function SubTitle({ children }) {
   );
 }
 
-export function RegularText({ children }) {
+export function RegularText({
+  children, style, italic, bold,
+}) {
   useFonts({
     RobotoMono_400Regular,
+    RobotoMono_400Regular_Italic,
+    RobotoMono_700Bold,
   });
+  const font = italic
+    ? 'RobotoMono_400Regular_Italic'
+    : bold ? 'RobotoMono_700Bold' : 'RobotoMono_400Regular';
   return (
     <Text
       style={{
-        fontFamily: 'RobotoMono_400Regular',
+        fontFamily: font,
         fontSize: 18,
+        ...style,
       }}
     >
       {children}

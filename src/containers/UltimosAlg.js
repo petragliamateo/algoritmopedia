@@ -33,7 +33,7 @@ const data = [
   '¿Cómo calcular la media geométrica con Python2?',
 ];
 
-function Categorias() {
+function UltimosAlg() {
   return (
     <View style={styles.container}>
       <Title><Text>💡 Últimos Algoritmos</Text></Title>
@@ -48,4 +48,4 @@ function Categorias() {
   );
 }
 
-export default Categorias;
+export default UltimosAlg;

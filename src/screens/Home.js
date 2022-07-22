@@ -1,11 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
-  ScrollView,
+  ScrollView, View,
 } from 'react-native';
 import React from 'react';
 
-import { MainScreen, Categorias, UltimosAlg } from '../containers';
-import { FullScreen } from '../components';
+import {
+  MainScreen, Categorias, UltimosAlg, AportarAlg,
+} from '../containers';
+import { Footer, FullScreen } from '../components';
 
 function Home() {
   const color = '#2F7EC8';
@@ -22,6 +24,14 @@ function Home() {
       <FullScreen>
         <UltimosAlg />
       </FullScreen>
+
+      <FullScreen bg={color}>
+        <AportarAlg />
+      </FullScreen>
+
+      <View>
+        <Footer />
+      </View>
     </ScrollView>
   );
 }
