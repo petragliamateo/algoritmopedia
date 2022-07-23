@@ -9,11 +9,11 @@ import mateCheck from '../../assets/images/mateformulario.png';
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 45,
+    paddingVertical: 35,
     paddingHorizontal: 15,
     height: '100%',
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
   align: {
@@ -50,7 +50,7 @@ function AportarAlg() {
         </RegularText>
         <Button title="APORTAR" />
       </View>
-      <Image style={styles.img} source={{ uri: mateCheck }} />
+      <Image style={styles.img} source={mateCheck} />
     </View>
   );
 }

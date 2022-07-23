@@ -29,7 +29,7 @@ function Home() {
         <AportarAlg />
       </FullScreen>
 
-      <View>
+      <View style={{ backgroundColor: '#333333', borderTopWidth: 2 }}>
         <Footer />
       </View>
     </ScrollView>

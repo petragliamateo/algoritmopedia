@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   Image, Text, View, StyleSheet,
 } from 'react-native';
@@ -29,9 +30,11 @@ function Main() {
       <Title>
         <Text>Entrena tu pensamiento lógico</Text>
       </Title>
-      <Image style={styles.image} source={{ uri: matecodigo }} />
+      <Image style={styles.image} source={matecodigo} />
 
-      <Search />
+      <View style={{ marginHorizontal: 25 }}>
+        <Search />
+      </View>
 
     </View>
   );

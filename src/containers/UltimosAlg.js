@@ -7,11 +7,11 @@ import { Title, Linked } from '../customComponents/TextComponents';
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 25,
+    paddingVertical: 35,
     paddingHorizontal: 15,
     height: '100%',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   item: {
     padding: 20,

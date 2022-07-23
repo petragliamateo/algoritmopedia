@@ -1,36 +1,50 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
-  Text, View, StyleSheet, Button, Image,
+  Text, View, StyleSheet, Image,
 } from 'react-native';
 import React from 'react';
 
-import { RegularText } from '../customComponents/TextComponents';
-import mateCheck from '../../assets/images/mateformulario.png';
+import { RegularText, Linked } from '../customComponents/TextComponents';
+import instagram from '../../assets/icons/instagram.png';
+import linkedin from '../../assets/icons/linkedin.png';
 
 const styles = StyleSheet.create({
   container: {
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: '#aaaaaa',
+    marginHorizontal: 35,
+    marginVertical: 15,
   },
   views: {
     display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     alignItems: 'center',
-    borderBottomWidth: 1,
+    justifyContent: 'space-between',
     width: '100%',
-    padding: 20,
+  },
+  socials: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   text: {
-    textAlign: 'center',
+    color: '#BBBBBB',
+    fontSize: 16,
   },
-  miniText: {
-    textAlign: 'center',
-    fontSize: 12,
+  iconContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 33,
+    width: 33,
+    height: 33,
+    marginHorizontal: 5,
   },
   img: {
-    width: 35,
-    height: 35,
+    width: 18,
+    height: 18,
   },
 });
 
@@ -38,27 +52,35 @@ function Footer() {
   return (
     <View style={styles.container}>
       <View style={styles.views}>
-        <Button title="Envía tu sugerencia sobre Algoritmopedia" />
+        <Linked style={styles.text} bold>
+          <Text>Envía tu sugerencia sobre Algoritmopedia</Text>
+        </Linked>
       </View>
 
       <View style={styles.views}>
         <RegularText style={styles.text} bold>
-          <Text>Redes Sociales</Text>
+          <Text>Redes Sociales:</Text>
         </RegularText>
-        <Image style={styles.img} source={{ uri: mateCheck }} />
-        <Image style={styles.img} source={{ uri: mateCheck }} />
+        <View style={styles.socials}>
+          <View style={{ ...styles.iconContainer, backgroundColor: '#cd2653' }}>
+            <Image style={styles.img} source={instagram} />
+          </View>
+          <View style={{ ...styles.iconContainer, backgroundColor: '#0672ee' }}>
+            <Image style={styles.img} source={linkedin} />
+          </View>
+        </View>
       </View>
 
       <View style={styles.views}>
         <RegularText style={styles.text} bold>
-          <Text>Contacto</Text>
+          <Text>Contacto:</Text>
         </RegularText>
-        <RegularText style={styles.miniText} italic>
+        <RegularText style={styles.text} italic>
           <Text>soporte@algoritmopedia.org</Text>
         </RegularText>
       </View>
 
-      <View>
+      <View style={{ marginTop: 15 }}>
         <RegularText>
           <Text>© 2022 Algoritmopedia</Text>
         </RegularText>

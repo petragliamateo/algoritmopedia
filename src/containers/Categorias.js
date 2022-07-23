@@ -8,13 +8,13 @@ import { Title, SubTitle, RegularText } from '../customComponents/TextComponents
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 25,
+    paddingVertical: 35,
     height: '100%',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   horizontalScroller: {
-    maxHeight: 400,
+    maxHeight: '70%',
   },
 });
 
@@ -27,14 +27,15 @@ const lorem = `
 
 function Categorias() {
   const { width } = useWindowDimensions();
-  // Largo de la targeta = windowWidth - marginX * 2.
-  const cardWidth = width - 20;
+  // Largo de la targeta = windowWidth - marginX * 2 - paddingCont * 2.
+  const cardWidth = width - 60;
   const cardStyle = {
     width: cardWidth,
     padding: 20,
     borderWidth: 1,
     borderRadius: 5,
-    margin: 10,
+    marginHorizontal: 25,
+    alignSelf: 'flex-start',
   };
   return (
     <View style={styles.container}>
@@ -46,7 +47,7 @@ function Categorias() {
             style={cardStyle}
           >
             <SubTitle><Text style={{ color: '#ffffff' }}>{title}</Text></SubTitle>
-            <RegularText><Text style={{ color: '#ffffff' }}>{lorem}</Text></RegularText>
+            <RegularText style={{ color: '#ffffff' }}><Text>{lorem}</Text></RegularText>
           </View>
         ))}
       </ScrollView>

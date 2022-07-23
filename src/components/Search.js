@@ -7,8 +7,9 @@ import React from 'react';
 import {
   useFonts, RobotoMono_400Regular,
 } from '@expo-google-fonts/roboto-mono';
+import AppLoading from 'expo-app-loading';
 
-import searchIcon from '../../assets/icons/search.svg';
+import searchIcon from '../../assets/icons/search.png';
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: 1,
     borderColor: '#777777',
-    width: '80%',
+    width: '100%',
     padding: 5,
     alignSelf: 'center',
   },
@@ -29,16 +30,19 @@ const styles = StyleSheet.create({
 });
 
 function Search() {
-  useFonts({
+  const [fontsLoaded] = useFonts({
     RobotoMono_400Regular,
   });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <View style={styles.inputContainer}>
       <TextInput
         style={{
           alignSelf: 'center',
           color: '#777777',
-          width: '100%',
+          maxWidth: '80%',
           fontSize: 16,
           fontFamily: 'RobotoMono_400Regular',
         }}
@@ -46,8 +50,8 @@ function Search() {
       />
       <Pressable style={styles.searchButton}>
         <Image
-          style={{ width: 17, height: 17, transform: 'rotate(90deg)' }}
-          source={{ uri: searchIcon }}
+          style={{ width: 17, height: 17, transform: [{ rotate: '90deg' }] }}
+          source={searchIcon}
         />
       </Pressable>
     </View>
