@@ -17,7 +17,7 @@ export default function Navigation() {
         <Stack.Screen name="home" component={Home} />
         <Stack.Screen name="biblioteca" component={Biblioteca} />
         <Stack.Screen name="copa" component={Copa} />
-        <Stack.Screen name="categorias" component={Categorias} />
+        <Stack.Screen name="categorias" component={(props) => <Categorias props={props.route.params} />} />
       </Stack.Navigator>
     </NavigationContainer>
   );

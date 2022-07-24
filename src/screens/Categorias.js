@@ -1,9 +1,26 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react-native/no-raw-text */
 import React from 'react';
-import { Text } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
-function Categorias() {
+import { Title } from '../customComponents/TextComponents';
+import { Footer } from '../components';
+import AlgoritmoContainer from '../containers/AlgoritmoContainer';
+
+function Categorias({ props }) {
+  const { title } = props;
   return (
-    <Text>Categorias</Text>
+    <ScrollView>
+      <Title>
+        {`Categoria: ${title}`}
+      </Title>
+
+      <AlgoritmoContainer categoria={title} />
+
+      <View style={{ backgroundColor: '#333333', borderTopWidth: 2 }}>
+        <Footer />
+      </View>
+    </ScrollView>
   );
 }
 

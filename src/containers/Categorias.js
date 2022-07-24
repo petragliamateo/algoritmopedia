@@ -1,8 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
-  Text, View, StyleSheet, ScrollView, useWindowDimensions,
+  Text, View, StyleSheet, ScrollView, useWindowDimensions, Pressable,
 } from 'react-native';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { Title, SubTitle, RegularText } from '../customComponents/TextComponents';
 
@@ -26,6 +27,7 @@ const lorem = `
   Consectetur, ipsam!`;
 
 function Categorias() {
+  const navigation = useNavigation();
   const { width } = useWindowDimensions();
   // Largo de la targeta = windowWidth - marginX * 2 - paddingCont * 2.
   const cardWidth = width - 60;
@@ -42,13 +44,14 @@ function Categorias() {
       <Title><Text style={{ color: '#ffffff' }}>📝 Categorías</Text></Title>
       <ScrollView horizontal style={styles.horizontalScroller}>
         {data.map((title) => (
-          <View
+          <Pressable
             key={title}
             style={cardStyle}
+            onPress={() => navigation.navigate('categorias', { title })}
           >
             <SubTitle><Text style={{ color: '#ffffff' }}>{title}</Text></SubTitle>
             <RegularText style={{ color: '#ffffff' }}><Text>{lorem}</Text></RegularText>
-          </View>
+          </Pressable>
         ))}
       </ScrollView>
     </View>
