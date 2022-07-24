@@ -9,7 +9,7 @@ import {
 } from '@expo-google-fonts/roboto-mono';
 import AppLoading from 'expo-app-loading';
 
-export function Title({ children }) {
+export function Title({ children, style }) {
   const [fontsLoaded] = useFonts({
     RobotoMono_700Bold,
   });
@@ -22,6 +22,7 @@ export function Title({ children }) {
         fontFamily: 'RobotoMono_700Bold',
         fontSize: 32,
         textAlign: 'center',
+        ...style,
       }}
     >
       {children}
@@ -29,7 +30,7 @@ export function Title({ children }) {
   );
 }
 
-export function SubTitle({ children }) {
+export function SubTitle({ children, style }) {
   const [fontsLoaded] = useFonts({
     RobotoMono_400Regular,
   });
@@ -41,6 +42,7 @@ export function SubTitle({ children }) {
       style={{
         fontFamily: 'RobotoMono_400Regular',
         fontSize: 28,
+        ...style,
       }}
     >
       {children}
