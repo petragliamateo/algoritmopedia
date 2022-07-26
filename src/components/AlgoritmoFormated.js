@@ -14,15 +14,36 @@ const styles = StyleSheet.create({
   },
 });
 
-function destructuring(obj = { content: '' }) {
+function destructuring(obj = { content: '' }, type = '') {
   if (obj.content || obj.content === '') {
-    return [obj.content];
+    return typeComponent(obj.content, type);
   }
   const allValues = [];
   obj.children.forEach((elm) => {
-    allValues.push(destructuring(elm));
+    allValues.push(destructuring(elm, obj.type));
   });
   return allValues;
+}
+
+function typeComponent(content, type) {
+  let style;
+  switch (type) {
+    case '':
+      style = { color: 'red' };
+      break;
+    case 'p':
+      style = { color: 'orange' };
+      break;
+    case 'code':
+      style = { color: 'green' };
+      break;
+    case 'strong':
+      style = { color: 'black', fontSize: 24 };
+      break;
+    default:
+      break;
+  }
+  return <Text style={style}>{content}</Text>;
 }
 
 // La data del algoritmo: json string con el documento html.
@@ -32,7 +53,7 @@ function AlgoritmoFormated({ algoritmo }) {
     <View style={styles.container}>
       {format(algoritmo).children.map((inc) => (
         <View>
-          <Text>{destructuring(inc)}</Text>
+          {destructuring(inc)}
         </View>
       ))}
     </View>
