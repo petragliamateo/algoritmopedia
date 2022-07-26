@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 import { SubTitle } from '../customComponents/TextComponents';
+import format from '../helpers/formatHtml';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,43 +14,27 @@ const styles = StyleSheet.create({
   },
 });
 
-// La data del algoritmo: json string con el documento html.
-
-function format(html) {
-  let htmls = html.toString();
-  let part = '';
-  const arrayOfDoc = [];
-  while (htmls.indexOf('<p>') !== -1) {
-    const index1 = htmls.indexOf('<p>');
-    const index2 = htmls.indexOf('</p>');
-    part = htmls.slice(index1, index2 + 4);
-    htmls = htmls.replace(part, '');
-    arrayOfDoc.push(destructuring(part));
+function destructuring(obj = { content: '' }) {
+  if (obj.content || obj.content === '') {
+    return [obj.content];
   }
-  return { arrayOfDoc, htmls };
+  const allValues = [];
+  obj.children.forEach((elm) => {
+    allValues.push(destructuring(elm));
+  });
+  return allValues;
 }
 
-function destructuring(section) {
-  const index1 = section.indexOf('<');
-  const index2 = section.indexOf('>');
-  const lastIndex1 = section.lastIndexOf('<');
-  const lastIndex2 = section.lastIndexOf('>');
-  const type = section.slice(index1, index2 + 1);
-  const content = section.slice(index2 + 1, lastIndex1);
-
-  return { type, content };
-}
+// La data del algoritmo: json string con el documento html.
 
 function AlgoritmoFormated({ algoritmo }) {
   return (
     <View style={styles.container}>
-      {format(algoritmo).arrayOfDoc.map((inc) => (
-        <View key={inc.content}>
-          <Text>{inc.type}</Text>
-          <Text>{inc.content}</Text>
+      {format(algoritmo).children.map((inc) => (
+        <View>
+          <Text>{destructuring(inc)}</Text>
         </View>
       ))}
-      <Text>{format(algoritmo).htmls}</Text>
     </View>
   );
 }
