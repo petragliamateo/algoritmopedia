@@ -1,16 +1,16 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  View, Button, Image, StyleSheet, Text,
+  View, StyleSheet,
 } from 'react-native';
 
-import { SubTitle } from '../customComponents/TextComponents';
+import { RegularText } from '../customComponents/TextComponents';
 import format from '../helpers/formatHtml';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
   },
 });
 
@@ -27,23 +27,26 @@ function destructuring(obj = { content: '' }, type = '') {
 
 function typeComponent(content, type) {
   let style;
+  let bold = false;
+  if (content === '\n' || content === '\n\n\n\n') { return null; }
   switch (type) {
     case '':
       style = { color: 'red' };
       break;
     case 'p':
-      style = { color: 'orange' };
+      style = { color: 'black' };
       break;
     case 'code':
-      style = { color: 'green' };
+      style = { color: 'green', backgroundColor: 'black', padding: 16 };
       break;
     case 'strong':
-      style = { color: 'black', fontSize: 24 };
+      style = { color: 'black' };
+      bold = true;
       break;
     default:
       break;
   }
-  return <Text style={style}>{content}</Text>;
+  return <RegularText style={style} bold={bold}>{content}</RegularText>;
 }
 
 // La data del algoritmo: json string con el documento html.
@@ -51,8 +54,8 @@ function typeComponent(content, type) {
 function AlgoritmoFormated({ algoritmo }) {
   return (
     <View style={styles.container}>
-      {format(algoritmo).children.map((inc) => (
-        <View>
+      {format(algoritmo).children.map((inc, i) => (
+        <View key={i}>
           {destructuring(inc)}
         </View>
       ))}

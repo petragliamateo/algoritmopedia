@@ -4,12 +4,22 @@ import {
   View, Button, Image, StyleSheet, Text,
 } from 'react-native';
 
-import { SubTitle } from '../customComponents/TextComponents';
 import AlgoritmoFormated from './AlgoritmoFormated';
+import matecodigo from '../../assets/images/matecodigo.png';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+  },
+  footer: {
+    display: 'flex',
+    height: 175,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    margin: 15,
+  },
+  img: {
+    width: 75,
+    height: 75,
   },
 });
 
@@ -19,7 +29,14 @@ function Algoritmo({ algoritmo }) {
   return (
     <View style={styles.container}>
       <AlgoritmoFormated algoritmo={algoritmo} />
-      <Text>Footer en comun</Text>
+      <View style={styles.footer}>
+        <Image style={styles.img} source={matecodigo} />
+        <Button title="contenido relacionado" color="#0672ee" />
+        <Button title="corregir este aporte" color="#f08484" />
+      </View>
+      <View>
+        <Text>Tags...</Text>
+      </View>
     </View>
   );
 }

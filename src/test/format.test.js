@@ -1,5 +1,6 @@
 import format, { formattingTag } from '../helpers/formatHtml';
 import alg1 from '../data/algoritmos/alg1';
+import alg2 from '../data/algoritmos/alg2';
 
 describe('formattingTag Test', () => {
   test('Empty String return null', () => {
@@ -96,7 +97,7 @@ describe('format test', () => {
 
 describe('formal test', () => {
   test('HTML', () => {
-    const result = format(alg1);
+    const result = format(alg2);
     console.log(result);
   });
 });

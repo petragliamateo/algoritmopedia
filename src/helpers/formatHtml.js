@@ -42,7 +42,7 @@ export function formattingTag(section) {
     // Si el tag cierra otro children del mismo type:
       content = `${content}</${type}>`;
     }
-    if (childInd !== -1) {
+    if (childInd !== -1 && content.includes('<')) {
     // Si el tag contiene algun children (otro tag, puede ser el mismo tipo)
       const child = formattingTag(content);
       const start = `<${child.type}`;

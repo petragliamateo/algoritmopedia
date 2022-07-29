@@ -1,10 +1,11 @@
 import React from 'react';
 import {
-  View, Button, Image, StyleSheet, Text,
+  View, StyleSheet, Text,
 } from 'react-native';
 import Algoritmo from '../components/Algoritmo';
 
 import alg1 from '../data/algoritmos/alg1';
+import alg2 from '../data/algoritmos/alg2';
 
 const styles = StyleSheet.create({
   container: {
