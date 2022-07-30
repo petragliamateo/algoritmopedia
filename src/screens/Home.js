@@ -8,8 +8,10 @@ import {
   MainScreen, Categorias, UltimosAlg, AportarAlg,
 } from '../containers';
 import { Footer, FullScreen } from '../components';
+import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 function Home() {
+  const { algoritmos } = React.useContext(AlgoritmosContext);
   const color = '#2F7EC8';
   return (
     <ScrollView>
@@ -22,7 +24,7 @@ function Home() {
       </FullScreen>
 
       <FullScreen>
-        <UltimosAlg />
+        <UltimosAlg algoritmos={algoritmos} />
       </FullScreen>
 
       <FullScreen bg={color}>

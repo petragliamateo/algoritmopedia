@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
-  Image, Text, View, StyleSheet,
+  Image, Text, View, StyleSheet, Button,
 } from 'react-native';
 import React from 'react';
 
@@ -8,6 +8,8 @@ import { Title } from '../customComponents/TextComponents';
 import matecodigo from '../../assets/images/matecodigo.png';
 
 import Search from '../components/Search';
+import { getPosts } from '../services/algoritmos';
+import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,6 +27,13 @@ const styles = StyleSheet.create({
 });
 
 function Main() {
+  const { algoritmos, setAlgoritmos } = React.useContext(AlgoritmosContext);
+  console.log(algoritmos.map((alg) => alg.post_title));
+  const getData = async () => {
+    const data = await getPosts();
+    setAlgoritmos(data);
+  };
+
   return (
     <View style={styles.container}>
       <Title>
@@ -35,6 +44,8 @@ function Main() {
       <View style={{ marginHorizontal: 25 }}>
         <Search />
       </View>
+
+      <Button title="actualizar" onPress={getData} />
 
     </View>
   );
