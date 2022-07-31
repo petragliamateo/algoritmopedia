@@ -8,8 +8,6 @@ import { Title } from '../customComponents/TextComponents';
 import matecodigo from '../../assets/images/matecodigo.png';
 
 import Search from '../components/Search';
-import { getPosts } from '../services/algoritmos';
-import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,14 +24,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function Main() {
-  const { algoritmos, setAlgoritmos } = React.useContext(AlgoritmosContext);
-  console.log(algoritmos.map((alg) => alg.post_title));
-  const getData = async () => {
-    const data = await getPosts();
-    setAlgoritmos(data);
-  };
-
+function Main({ getData }) {
   return (
     <View style={styles.container}>
       <Title>

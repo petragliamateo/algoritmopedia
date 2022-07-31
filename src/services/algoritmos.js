@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-const baseUrl = 'http://192.168.0.217:3003';
+const baseUrl = 'http://192.168.43.184:3003';
 
 const getPosts = async () => {
   try {
     const result = await axios.get(`${baseUrl}/allposts`);
+    alert('Algoritmos actualizados!');
     return result.data;
   } catch (error) {
-    return error;
+    alert(error);
+    return [];
   }
 };
 
