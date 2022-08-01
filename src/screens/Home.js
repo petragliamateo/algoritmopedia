@@ -9,22 +9,17 @@ import {
 } from '../containers';
 import { Footer, FullScreen } from '../components';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
-import { getPosts } from '../services/algoritmos';
 
 function Home() {
-  const { algoritmos, setAlgoritmos } = React.useContext(AlgoritmosContext);
+  const { algoritmos, reloadData } = React.useContext(AlgoritmosContext);
   // Ordenar algoritmos por fecha
   const lastest = algoritmos.slice(algoritmos.length - 3, algoritmos.length);
   console.log(algoritmos.map((a) => a.post_title));
   const color = '#2F7EC8';
-  const getData = async () => {
-    const data = await getPosts();
-    setAlgoritmos(data);
-  };
   return (
     <ScrollView>
       <FullScreen>
-        <MainScreen getData={getData} />
+        <MainScreen getData={reloadData} />
       </FullScreen>
 
       <FullScreen bg={color}>

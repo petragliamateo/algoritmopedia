@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://192.168.43.184:3003';
+const baseUrl = 'http://192.168.1.38:3003';
 
 const getPosts = async () => {
   try {
