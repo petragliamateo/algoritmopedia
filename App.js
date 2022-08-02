@@ -53,7 +53,7 @@ export default function App() {
       setAlgoritmos([]);
       Alert.alert('Matias dice:', 'Cache eliminado');
     } catch (error) {
-      alert(error);
+      Alert.alert('Error:', error);
     }
   };
 
