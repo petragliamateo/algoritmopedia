@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function Main({ getData }) {
+function Main({ getData, removeData }) {
   return (
     <View style={styles.container}>
       <Title>
@@ -37,6 +37,7 @@ function Main({ getData }) {
       </View>
 
       <Button title="actualizar" onPress={getData} />
+      <Button title="limpiar cache" onPress={removeData} color="red" />
 
     </View>
   );

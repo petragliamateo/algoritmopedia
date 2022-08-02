@@ -1,15 +1,16 @@
 import axios from 'axios';
+import { Alert } from 'react-native';
 
-const baseUrl = 'http://192.168.1.38:3003';
+const baseUrl = 'https://radiant-citadel-39413.herokuapp.com';
 
 const getPosts = async () => {
   try {
-    const result = await axios.get(`${baseUrl}/allposts`);
-    alert('Algoritmos actualizados!');
+    const result = await axios.get(`${baseUrl}/api/allposts`);
+    Alert.alert('Matias dice:', 'Algoritmos actualizados!');
     return result.data;
   } catch (error) {
-    alert(error);
-    return [];
+    Alert.alert('Error', 'Error al cargar los algoritmos');
+    return null;
   }
 };
 

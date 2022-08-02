@@ -11,15 +11,14 @@ import { Footer, FullScreen } from '../components';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 function Home() {
-  const { algoritmos, reloadData } = React.useContext(AlgoritmosContext);
+  const { algoritmos, reloadData, removeData } = React.useContext(AlgoritmosContext);
   // Ordenar algoritmos por fecha
   const lastest = algoritmos.slice(algoritmos.length - 3, algoritmos.length);
-  console.log(algoritmos.map((a) => a.post_title));
   const color = '#2F7EC8';
   return (
     <ScrollView>
       <FullScreen>
-        <MainScreen getData={reloadData} />
+        <MainScreen getData={reloadData} removeData={removeData} />
       </FullScreen>
 
       <FullScreen bg={color}>
