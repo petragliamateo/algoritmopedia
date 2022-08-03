@@ -9,8 +9,13 @@ import Algoritmo from '../components/Algoritmo';
 
 function AlgoritmoScreen({ props }) {
   const { algoritmo } = props;
+  console.log(algoritmo);
+  // Para que funcione pasar post_content en Algoritmo se debe mejorar el formateo
+  // De tal manerea que se supriman los comentarios.
   return (
     <ScrollView>
+      <Title>{algoritmo.post_title}</Title>
+
       <Algoritmo algoritmo={algoritmo} />
 
       <Title>Comentarios..</Title>
