@@ -10,6 +10,7 @@ const getPosts = async () => {
     return result.data;
   } catch (error) {
     Alert.alert('Error', 'Error al cargar los algoritmos');
+    console.log(error);
     return null;
   }
 };

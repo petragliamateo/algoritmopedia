@@ -11,7 +11,6 @@ import AlgoritmosContext from './src/contexts/AlgoritmosContext';
 export default function App() {
   const [algoritmos, setAlgoritmos] = React.useState([]);
 
-  // Limpiar cache, const removeData ...
   const getData = async () => {
     try {
       const data = await AsyncStorage.getItem('@algoritmosData');

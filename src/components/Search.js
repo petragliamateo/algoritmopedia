@@ -3,12 +3,13 @@
 import {
   Image, View, StyleSheet, TextInput, Pressable,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   useFonts, RobotoMono_400Regular,
 } from '@expo-google-fonts/roboto-mono';
 import AppLoading from 'expo-app-loading';
 
+import { useNavigation } from '@react-navigation/native';
 import searchIcon from '../../assets/icons/search.png';
 
 const styles = StyleSheet.create({
@@ -29,7 +30,26 @@ const styles = StyleSheet.create({
   },
 });
 
-function Search() {
+function Search({ searchTerm, setSearchTerm }) {
+  // Idea del buscador: Si se usa para rederigir al screen AllAlgoritmos
+  // --> Se le pasa el state y set por prop
+  // Cuando se busca desde navBar o MainScreen se pasa el termino como prop en navigate
+  // Entonces creo un state solo para el navbar o mainScreen
+  const [submitTerm, setSubmitTerm] = useState('');
+  const navigation = useNavigation();
+
+  const handleChange = (text) => {
+    console.log(text);
+    setSubmitTerm(text);
+    if (setSearchTerm) {
+      setSearchTerm(text);
+    }
+  };
+
+  const handleSubmit = () => {
+    navigation.navigate('allAlgoritmos', { term: submitTerm });
+  };
+
   const [fontsLoaded] = useFonts({
     RobotoMono_400Regular,
   });
@@ -47,8 +67,13 @@ function Search() {
           fontFamily: 'RobotoMono_400Regular',
         }}
         placeholder="Buscar algoritmo"
+        onChangeText={(target) => handleChange(target)}
+        value={searchTerm}
       />
-      <Pressable style={styles.searchButton}>
+      <Pressable
+        style={styles.searchButton}
+        onPress={handleSubmit}
+      >
         <Image
           style={{ width: 17, height: 17, transform: [{ rotate: '90deg' }] }}
           source={searchIcon}

@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import {
-  Home, Biblioteca, Copa, Categorias, AlgoritmoScreen,
+  Home, Biblioteca, Copa, Categorias, AlgoritmoScreen, AllAlgoritmos,
 } from '../screens';
 import Header from '../components/Header';
 
@@ -19,7 +19,7 @@ export default function Navigation() {
         <Stack.Screen name="copa" component={Copa} />
         <Stack.Screen name="categorias" component={(props) => <Categorias props={props.route.params} />} />
         <Stack.Screen name="algoritmo" component={(props) => <AlgoritmoScreen props={props.route.params} />} />
-        <Stack.Screen name="allAlgoritmos" component={Home} />
+        <Stack.Screen name="allAlgoritmos" component={(props) => <AllAlgoritmos props={props.route.params} />} />
       </Stack.Navigator>
     </NavigationContainer>
   );
