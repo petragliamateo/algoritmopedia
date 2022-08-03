@@ -6,11 +6,12 @@ import {
 import algoritmopedia from '../../assets/images/algoritmopediaclaro.png';
 import searchIcon from '../../assets/icons/searchBlack.png';
 import dotsIcon from '../../assets/icons/three-dots.png';
-import { MenuModal } from '../screens';
+import { MenuModal, SearchModal } from '../screens';
 import { MiniText } from '../customComponents/TextComponents';
 
 function Navbar() {
   const [showMenu, setShowMenu] = React.useState(false);
+  const [showSearch, setShowSearch] = React.useState(false);
   // Solucion temporal, saco el status bar.
   StatusBar.setHidden(true);
   const styles = StyleSheet.create({
@@ -39,12 +40,18 @@ function Navbar() {
 
   return (
     <View style={styles.container}>
-      <Pressable style={styles.pressButton}>
+      <Pressable
+        style={styles.pressButton}
+        onPress={() => setShowSearch((prev) => !prev)}
+      >
         <Image style={{ width: 23, height: 23 }} source={searchIcon} />
         <MiniText><Text>Buscar</Text></MiniText>
       </Pressable>
       <Image style={styles.image} source={algoritmopedia} />
-      <Pressable style={styles.pressButton} onPress={() => setShowMenu((prev) => !prev)}>
+      <Pressable
+        style={styles.pressButton}
+        onPress={() => setShowMenu((prev) => !prev)}
+      >
         <Image style={{ width: 26, height: 23 }} source={dotsIcon} />
         <MiniText><Text>Menú</Text></MiniText>
       </Pressable>
@@ -55,6 +62,15 @@ function Navbar() {
         animationType="slide"
       >
         <MenuModal setShowMenu={setShowMenu} />
+      </Modal>
+
+      <Modal
+        visible={showSearch}
+        onRequestClose={() => setShowSearch((prev) => !prev)}
+        transparent
+        animationType="fade"
+      >
+        <SearchModal setShowSearch={setShowSearch} />
       </Modal>
     </View>
   );

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function Search({ searchTerm, setSearchTerm }) {
+function Search({ searchTerm, setSearchTerm, autoFocus }) {
   // Idea del buscador: Si se usa para rederigir al screen AllAlgoritmos
   // --> Se le pasa el state y set por prop
   // Cuando se busca desde navBar o MainScreen se pasa el termino como prop en navigate
@@ -39,7 +39,6 @@ function Search({ searchTerm, setSearchTerm }) {
   const navigation = useNavigation();
 
   const handleChange = (text) => {
-    console.log(text);
     setSubmitTerm(text);
     if (setSearchTerm) {
       setSearchTerm(text);
@@ -69,6 +68,7 @@ function Search({ searchTerm, setSearchTerm }) {
         placeholder="Buscar algoritmo"
         onChangeText={(target) => handleChange(target)}
         value={searchTerm}
+        autoFocus={autoFocus}
       />
       <Pressable
         style={styles.searchButton}
