@@ -1,6 +1,8 @@
 /* eslint-disable no-use-before-define */
 export default function format(html = '') {
-  const htmls = transformToJSX(html);
+  const noFooter = removeCommonFooter(html);
+  const noComment = removeCommentTags(noFooter);
+  const htmls = transformToJSX(noComment);
   return formattingTag(htmls);
 }
 
@@ -58,4 +60,25 @@ export function formattingTag(section) {
     }
   }
   return tag;
+}
+
+export function removeCommentTags(section = '') {
+  // Los comentarios html tienen forma <!-- comment... -->
+  let newSection = section;
+  while (newSection.includes('<!--')) {
+    const first = newSection.indexOf('<!--');
+    const last = newSection.indexOf('-->');
+    const comment = newSection.slice(first, last + 3);
+    newSection = newSection.replace(comment, '');
+  }
+  return newSection;
+}
+
+export function removeCommonFooter(section = '') {
+  // Los posts tienen un footer en comun, que arrancan con el comentario:
+  const initFooter = '<!-- wp:image {"align":"center","id":64,"width":93,"height":111,"sizeSlug":"full","linkDestination":"none"} -->';
+  if (section.includes(initFooter)) {
+    return section.substring(0, section.indexOf(initFooter));
+  }
+  return section;
 }

@@ -1,4 +1,4 @@
-import format, { formattingTag } from '../helpers/formatHtml';
+import format, { formattingTag, removeCommentTags, removeCommonFooter } from '../helpers/formatHtml';
 import alg1 from '../data/algoritmos/alg1';
 import alg2 from '../data/algoritmos/alg2';
 
@@ -96,8 +96,20 @@ describe('format test', () => {
 });
 
 describe('formal test', () => {
-  test('HTML', () => {
-    const result = format(alg2);
+  test('remove comments test', () => {
+    const content = 'asdfghjkl<!-- wpdasda --> esto sigue';
+    const result = removeCommentTags(content);
+    expect(result).toBe('asdfghjkl esto sigue');
+  });
+
+  test('remove common footer', () => {
+    console.log(removeCommonFooter(alg2));
+  });
+
+  test('HTML Doc', () => {
+    const noFooter = removeCommonFooter(alg2);
+    const noComment = removeCommentTags(noFooter);
+    const result = format(noComment);
     console.log(result);
   });
 });
