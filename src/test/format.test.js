@@ -1,6 +1,9 @@
-import format, { formattingTag, removeCommentTags, removeCommonFooter } from '../helpers/formatHtml';
+import format, {
+  formattingTag, removeAutoclosedTags, removeCommentTags, removeCommonFooter, transformToJSX,
+} from '../helpers/formatHtml';
 import alg1 from '../data/algoritmos/alg1';
 import alg2 from '../data/algoritmos/alg2';
+import alg3 from '../data/algoritmos/alg3';
 
 describe('formattingTag Test', () => {
   test('Empty String return null', () => {
@@ -43,6 +46,7 @@ describe('Advanced Tests', () => {
   test('Tag with varius children tags', () => {
     const section = '<p>a text <h1>title</h1>more text <strong>stronger<h1>TEXT</h1></strong></p>';
     const result = formattingTag(section);
+    // console.log(result.children);
     expect(result.children).toEqual([
       { content: 'a text ' },
       { type: 'h1', children: [{ content: 'title' }] },
@@ -96,6 +100,7 @@ describe('format test', () => {
 });
 
 describe('formal test', () => {
+  /*
   test('remove comments test', () => {
     const content = 'asdfghjkl<!-- wpdasda --> esto sigue';
     const result = removeCommentTags(content);
@@ -103,13 +108,26 @@ describe('formal test', () => {
   });
 
   test('remove common footer', () => {
-    console.log(removeCommonFooter(alg2));
+    // console.log(removeCommonFooter(alg2));
   });
 
   test('HTML Doc', () => {
     const noFooter = removeCommonFooter(alg2);
     const noComment = removeCommentTags(noFooter);
     const result = format(noComment);
-    console.log(result);
+    // console.log(result);
+  });
+  */
+
+  test('Problem alg', () => {
+    const noFooter = removeCommonFooter(alg3);
+    // console.log(noFooter);
+    const noComment = removeCommentTags(noFooter);
+    // console.log(noComment);
+    const noAutoTags = removeAutoclosedTags(noComment);
+    // console.log(noAutoTags);
+    const htmls = transformToJSX(noAutoTags);
+    const result = formattingTag(htmls);
+    // console.log(result);
   });
 });

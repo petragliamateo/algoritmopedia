@@ -6,4 +6,5 @@ commit algoritmos 0.10 bugs:
     como hacer una guitarra
     como calcular la media geom
     como hacer elbuble short
-  Errores en comun: funcion de formateo, tags que se cierran solos? imagen?S
+  Errores en comun: funcion de formateo, tags que se cierran solos? imagen?
+  Contiene tag que se cierra />
