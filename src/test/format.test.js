@@ -100,7 +100,6 @@ describe('format test', () => {
 });
 
 describe('formal test', () => {
-  /*
   test('remove comments test', () => {
     const content = 'asdfghjkl<!-- wpdasda --> esto sigue';
     const result = removeCommentTags(content);
@@ -117,7 +116,6 @@ describe('formal test', () => {
     const result = format(noComment);
     // console.log(result);
   });
-  */
 
   test('Problem alg', () => {
     const noFooter = removeCommonFooter(alg3);
