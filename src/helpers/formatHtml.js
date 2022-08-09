@@ -82,8 +82,9 @@ function searchTag(document = '') {
     closeTagIndex = html.indexOf(closeTag, position);
     if (closeTagIndex === -1) closeTagIndex = 0;
     content = html.slice(index2 + 1, closeTagIndex);
-    console.log(content, `type: ${type}`);
     if (!content.includes(`<${type}`, position - html.indexOf(content))) {
+      // La posicion real a contar a partir de content es position menos su posicion
+      // Ya que position se mide a partir de html, y es relativo a content.
       break;
     }
     // else: (content incluye un <type> igual)
