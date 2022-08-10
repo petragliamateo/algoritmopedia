@@ -3,28 +3,37 @@ import {
   View, StyleSheet, Text,
 } from 'react-native';
 import Algoritmo from '../components/Algoritmo';
-
-import alg1 from '../data/algoritmos/alg1';
-import alg2 from '../data/algoritmos/alg2';
+import AlgoritmosContext from '../contexts/AlgoritmosContext';
+import { Title } from '../customComponents/TextComponents';
+import categorySwitch from '../helpers/categorySwitch';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+  },
+  algItem: {
+    paddingVertical: 25,
+    borderTopWidth: 1,
   },
 });
 
 // La data del algoritmo: json string con el documento html.
 
 function AlgoritmoContainer({ categoria }) {
-  const [algoritmos, setAlgoritmos] = React.useState([alg1]);
+  const { algoritmos } = React.useContext(AlgoritmosContext);
+  const [algoritmosSelected, setAlgoritmosSelected] = React.useState([]);
   // Pasar a switch o funcion externa
-  if (categoria === 'Condicionales') {
-    // setAlgoritmos([alg1]);
-  }
+  React.useEffect(() => {
+    categorySwitch(categoria, algoritmos, setAlgoritmosSelected);
+  }, []);
+
   return (
     <View style={styles.container}>
-      {algoritmos.map((alg) => <Algoritmo algoritmo={alg} />)}
-      <Text>Footer en comun</Text>
+      {algoritmosSelected.map((alg) => (
+        <View style={styles.algItem}>
+          <Title>{alg.post_title}</Title>
+          <Algoritmo algoritmo={alg.post_content} />
+        </View>
+      ))}
     </View>
   );
 }

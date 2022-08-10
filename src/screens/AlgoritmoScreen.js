@@ -17,8 +17,6 @@ function AlgoritmoScreen({ props }) {
 
       <Algoritmo algoritmo={algoritmo.post_content} />
 
-      <Title>Comentarios..</Title>
-
       <View style={{ backgroundColor: '#333333', borderTopWidth: 2 }}>
         <Footer />
       </View>

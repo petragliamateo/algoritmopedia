@@ -1,9 +1,10 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  View, StyleSheet,
+  View, StyleSheet, Text,
 } from 'react-native';
 
 import { RegularText } from '../customComponents/TextComponents';
@@ -37,10 +38,15 @@ function typeComponent(content, type) {
       style = { color: 'black' };
       break;
     case 'code':
-      style = { color: 'green', backgroundColor: 'black', padding: 16 };
-      break;
+      style = { color: 'green', backgroundColor: 'black', padding: 0 };
+      return <View><RegularText style={style} bold={bold}>{content}</RegularText></View>;
     case 'strong':
       style = { color: 'black' };
+      bold = true;
+      content = ` ${content} `;
+      break;
+    case 'a':
+      style = { color: 'blue', textDecorationLine: 'underline' };
       bold = true;
       break;
     default:
@@ -52,12 +58,13 @@ function typeComponent(content, type) {
 // La data del algoritmo: json string con el documento html.
 
 function AlgoritmoFormated({ algoritmo }) {
+  // Que los objetos retornen dentro de un Text hace que sigan la linea.
   return (
     <View style={styles.container}>
       {format(algoritmo).children.map((inc, i) => (
-        <View key={i}>
+        <Text key={i}>
           {destructuring(inc)}
-        </View>
+        </Text>
       ))}
     </View>
   );

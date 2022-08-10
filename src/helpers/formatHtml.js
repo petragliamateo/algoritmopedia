@@ -8,7 +8,9 @@ export default function format(html = '') {
 }
 
 export function transformToJSX(html = '') {
-  return `<html>${html.replace(/&nbsp;/g, '')}</html>`;
+  // El elemento br <br> no tiene etiqueta de cierre, lo reemplazo por /n
+  const filteredHtml = html.replace(/<br>/g, '');
+  return `<html>${filteredHtml.replace(/&nbsp;/g, '')}</html>`;
 }
 
 export function removeCommentTags(section = '') {
@@ -72,7 +74,6 @@ function searchTag(document = '') {
   // Si no es tag, retorno {content}
   if (!type) return [{ content: html }];
   const fullType = html.slice(index1 + 1, index2);
-  console.log('FULLTYPE: ', fullType, '--> Type: ', type);
 
   const closeTag = `</${type}>`;
   let closeTagIndex = html.indexOf(closeTag); // Debe ser el ultimo (while)
@@ -97,7 +98,7 @@ function searchTag(document = '') {
   if (index1 !== 0) returnArray.push({ content: html.slice(0, index1) });
   // retorno like child
   // No puedo llamar fotmattingTag3 aca, entonces creo una adaptacion:
-  const contentObj = { type, children: [] };
+  const contentObj = { type, fullType, children: [] };
   contentObj.children = searchTag(content);
   returnArray.push(contentObj);
 

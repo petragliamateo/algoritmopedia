@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  View, Button, Image, StyleSheet, Text,
+  View, Button, Image, StyleSheet,
 } from 'react-native';
 
 import AlgoritmoFormated from './AlgoritmoFormated';
@@ -33,9 +33,6 @@ function Algoritmo({ algoritmo }) {
         <Image style={styles.img} source={matecodigo} />
         <Button title="contenido relacionado" color="#0672ee" />
         <Button title="corregir este aporte" color="#f08484" />
-      </View>
-      <View>
-        <Text>Tags...</Text>
       </View>
     </View>
   );
