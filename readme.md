@@ -1,4 +1,4 @@
-apk: https://expo.dev/artifacts/788ca1e1-aa57-4e62-85c8-06979da75bc3
+apk: https://expo.dev/artifacts/0f50680f-7042-4db5-9590-5240f96ab6b7
 
 bugs:
   como hacer una guitarra
