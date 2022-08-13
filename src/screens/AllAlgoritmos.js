@@ -57,9 +57,7 @@ function AllAlgoritmos({ props }) {
         </View>
       </View>
 
-      <View style={{ backgroundColor: '#333333', borderTopWidth: 2 }}>
-        <Footer />
-      </View>
+      <Footer />
     </ScrollView>
   );
 }

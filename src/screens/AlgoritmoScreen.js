@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-native/no-raw-text */
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import { Title } from '../customComponents/TextComponents';
 import { Footer } from '../components';
@@ -17,9 +17,7 @@ function AlgoritmoScreen({ props }) {
 
       <Algoritmo algoritmo={algoritmo.post_content} />
 
-      <View style={{ backgroundColor: '#333333', borderTopWidth: 2 }}>
-        <Footer />
-      </View>
+      <Footer />
     </ScrollView>
   );
 }

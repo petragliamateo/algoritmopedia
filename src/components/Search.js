@@ -61,7 +61,7 @@ function Search({ searchTerm, setSearchTerm, autoFocus }) {
         style={{
           alignSelf: 'center',
           color: '#777777',
-          maxWidth: '80%',
+          minWidth: '70%',
           fontSize: 16,
           fontFamily: 'RobotoMono_400Regular',
         }}

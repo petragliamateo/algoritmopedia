@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
-  ScrollView, View,
+  ScrollView,
 } from 'react-native';
 import React from 'react';
 
@@ -33,9 +33,7 @@ function Home() {
         <AportarAlg />
       </FullScreen>
 
-      <View style={{ backgroundColor: '#333333', borderTopWidth: 2 }}>
-        <Footer />
-      </View>
+      <Footer />
     </ScrollView>
   );
 }

@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  ScrollView, Text, View, StyleSheet,
+  ScrollView, Text, StyleSheet,
 } from 'react-native';
 
 import { Footer } from '../components';
@@ -26,9 +26,7 @@ function Biblioteca() {
 
       <ArticleContainer lista={lista} />
 
-      <View style={{ backgroundColor: '#333333', borderTopWidth: 2 }}>
-        <Footer />
-      </View>
+      <Footer />
     </ScrollView>
   );
 }

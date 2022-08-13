@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, StyleSheet, Text,
+  View, StyleSheet,
 } from 'react-native';
 import Algoritmo from '../components/Algoritmo';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';

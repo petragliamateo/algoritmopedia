@@ -9,7 +9,9 @@ export default function format(html = '') {
 
 export function transformToJSX(html = '') {
   // El elemento br <br> no tiene etiqueta de cierre, lo reemplazo por /n
-  const filteredHtml = html.replace(/<br>/g, '');
+  let filteredHtml = html.replace(/<br>/g, '');
+  // Transformo codigo html:
+  filteredHtml = filteredHtml.replace(/&#91;/g, '[').replace(/&gt;/g, '>');
   return `<html>${filteredHtml.replace(/&nbsp;/g, '')}</html>`;
 }
 
