@@ -3,13 +3,15 @@ import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from 'react-native';
 
-import { getPosts } from './src/services/algoritmos';
+import { getCategories, getPages, getPosts } from './src/services/algoritmos';
 
 import Navigation from './src/navigation/Navigation';
 import AlgoritmosContext from './src/contexts/AlgoritmosContext';
 
 export default function App() {
-  const [algoritmos, setAlgoritmos] = React.useState([]);
+  const [algoritmosData, setAlgoritmosData] = React.useState({
+    algoritmos: [], categorias: [], pages: [],
+  });
 
   const getData = async () => {
     try {
@@ -23,22 +25,27 @@ export default function App() {
   const saveData = async (data) => {
     try {
       await AsyncStorage.setItem('@algoritmosData', JSON.stringify(data));
-      setAlgoritmos(data);
+      setAlgoritmosData(data);
     } catch (error) {
-      alert(error);
+      Alert.alert('Error', error);
     }
   };
   const reloadData = async () => {
-    const data = await getPosts();
+    const algoritmos = await getPosts();
+    const categorias = await getCategories();
+    const pages = await getPages();
+    const data = { algoritmos, categorias, pages };
     if (data) {
       await saveData(data);
+      Alert.alert('Matias dice:', 'Algoritmos actualizados!');
     }
   };
   React.useEffect(() => {
+    console.log(algoritmosData.categorias);
     const listener = async () => {
       const algData = await getData();
       if (algData) {
-        setAlgoritmos(algData);
+        setAlgoritmosData(algData);
       } else {
         await reloadData();
       }
@@ -49,7 +56,9 @@ export default function App() {
   const removeData = async () => {
     try {
       await AsyncStorage.removeItem('@algoritmosData');
-      setAlgoritmos([]);
+      setAlgoritmosData({
+        algoritmos: [], categorias: [], pages: [],
+      });
       Alert.alert('Matias dice:', 'Cache eliminado');
     } catch (error) {
       Alert.alert('Error:', error);
@@ -57,7 +66,14 @@ export default function App() {
   };
 
   return (
-    <AlgoritmosContext.Provider value={{ algoritmos, reloadData, removeData }}>
+    <AlgoritmosContext.Provider value={{
+      algoritmos: algoritmosData.algoritmos,
+      categorias: algoritmosData.categorias,
+      pages: algoritmosData.pages,
+      reloadData,
+      removeData,
+    }}
+    >
       <Navigation />
     </AlgoritmosContext.Provider>
   );

@@ -2,10 +2,13 @@
 import {
   Text, View, StyleSheet, ScrollView, useWindowDimensions, Pressable,
 } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { Title, SubTitle, RegularText } from '../customComponents/TextComponents';
+import AlgoritmosContext from '../contexts/AlgoritmosContext';
+
+// Estilo: que las tarjetas se pasen una por una, tipo publicacion de IG con circulitos abajo.
 
 const styles = StyleSheet.create({
   container: {
@@ -15,18 +18,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   horizontalScroller: {
-    maxHeight: '70%',
+    maxHeight: '50%',
+  },
+  commonTextCard: {
+    color: '#ffffff',
+    textAlign: 'center',
+    marginVertical: 15,
   },
 });
 
-const data = ['Condicionales', 'Entrada de datos', 'Inteligencia artificial', 'Iteración', 'Ordenamiento',
-  'POO', 'Recursividad'];
-const lorem = `
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut totam, sit veritatis molestiae rerum nulla
-  iure nemo quasi maiores, corporis nam in tenetur quia consequuntur, quibusdam exercitationem reiciendis.
-  Consectetur, ipsam!`;
-
 function Categorias() {
+  const { categorias } = useContext(AlgoritmosContext);
+
   const navigation = useNavigation();
   const { width } = useWindowDimensions();
   // Largo de la targeta = windowWidth - marginX * 2 - paddingCont * 2.
@@ -43,14 +46,14 @@ function Categorias() {
     <View style={styles.container}>
       <Title><Text style={{ color: '#ffffff' }}>📝 Categorías</Text></Title>
       <ScrollView horizontal style={styles.horizontalScroller}>
-        {data.map((title) => (
+        {categorias.map((cat) => (
           <Pressable
-            key={title}
+            key={cat.name}
             style={cardStyle}
-            onPress={() => navigation.navigate('categorias', { title })}
+            onPress={() => navigation.navigate('categorias', { category: cat })}
           >
-            <SubTitle><Text style={{ color: '#ffffff' }}>{title}</Text></SubTitle>
-            <RegularText style={{ color: '#ffffff' }}><Text>{lorem}</Text></RegularText>
+            <SubTitle style={styles.commonTextCard}>{cat.name}</SubTitle>
+            <RegularText style={styles.commonTextCard}>{cat.description}</RegularText>
           </Pressable>
         ))}
       </ScrollView>

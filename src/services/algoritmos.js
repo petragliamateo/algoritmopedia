@@ -6,8 +6,6 @@ const baseUrl = 'https://radiant-citadel-39413.herokuapp.com';
 const getPosts = async () => {
   try {
     const result = await axios.get(`${baseUrl}/api/allposts`);
-    // const copa = await axios.get(`${baseUrl}/api/copa`);
-    Alert.alert('Matias dice:', 'Algoritmos actualizados!');
     return result.data;
   } catch (error) {
     Alert.alert('Error', 'Error al cargar los algoritmos');
@@ -16,8 +14,31 @@ const getPosts = async () => {
   }
 };
 
-// getCopa (from /api/copa) que se recargue cada vez que se actualizan los algoritmos.
+const getCategories = async () => {
+  try {
+    const result = await axios.get(`${baseUrl}/api/categorias`);
+    return result.data;
+  } catch (error) {
+    Alert.alert('Error', 'Error del servidor.');
+    console.log(error);
+    return null;
+  }
+};
+
+const getPages = async () => {
+  try {
+    const copa = await axios.get(`${baseUrl}/api/pages/copa`);
+    const retos = await axios.get(`${baseUrl}/api/pages/retos`);
+    return [copa.data, retos.data];
+  } catch (error) {
+    Alert.alert('Error', 'Error del servidor.');
+    console.log(error);
+    return null;
+  }
+};
 
 const getOnePost = async () => {};
 
-export { getPosts, getOnePost };
+export {
+  getPosts, getOnePost, getCategories, getPages,
+};

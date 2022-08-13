@@ -3,19 +3,26 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 
-import { Title } from '../customComponents/TextComponents';
+import { RegularText, Title } from '../customComponents/TextComponents';
 import { Footer } from '../components';
 import AlgoritmoContainer from '../containers/AlgoritmoContainer';
 
 function Categorias({ props }) {
-  const { title } = props;
+  const { category } = props;
+  const commonStyle = {
+    marginVertical: 10,
+    textAlign: 'center',
+  };
+
   return (
     <ScrollView>
-      <Title>
-        {`Categoria: ${title}`}
+      <Title style={commonStyle}>
+        {`Categoria: ${category.name}`}
       </Title>
 
-      <AlgoritmoContainer categoria={title} />
+      <RegularText style={commonStyle}>{category.description}</RegularText>
+
+      <AlgoritmoContainer algoritmoNames={category.childrenNames} />
 
       <Footer />
     </ScrollView>
