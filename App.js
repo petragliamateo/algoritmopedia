@@ -3,7 +3,9 @@ import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from 'react-native';
 
-import { getCategories, getPages, getPosts } from './src/services/algoritmos';
+import {
+  getCategories, getInfo, getPages, getPosts,
+} from './src/services/algoritmos';
 
 import Navigation from './src/navigation/Navigation';
 import AlgoritmosContext from './src/contexts/AlgoritmosContext';
@@ -18,7 +20,7 @@ export default function App() {
       const data = await AsyncStorage.getItem('@algoritmosData');
       return data != null ? JSON.parse(data) : null;
     } catch (error) {
-      alert(error);
+      Alert.alert('Error', error);
       return null;
     }
   };
@@ -41,16 +43,40 @@ export default function App() {
     }
   };
   React.useEffect(() => {
-    console.log(algoritmosData.categorias);
     const listener = async () => {
       const algData = await getData();
+      // Si no hay storage en el movil pregunto si deseo cargar:
       if (algData) {
         setAlgoritmosData(algData);
       } else {
-        await reloadData();
+        Alert.alert(
+          'Matias dice:',
+          'No se han encontrado datos, desea cargarlos?',
+          [
+            { text: 'cancel', style: 'cancel' },
+            { text: 'Si', onPress: () => reloadData() },
+          ],
+        );
       }
+      // Check si hay algoritmos nuevos
+      const info = await getInfo();
+      const algCount = Number(info.substring(info.lastIndexOf(' ') + 1));
+      if (algCount === algoritmosData.algoritmos.length) {
+        Alert.alert('Matias dice:', 'Algoritmos al dia');
+        return;
+      }
+      Alert.alert(
+        'Matias dice:',
+        'Hay algoritmos nuevos! Desea actualizar?',
+        [
+          { text: 'cancel', style: 'cancel' },
+          { text: 'Si', onPress: () => reloadData() },
+        ],
+      );
     };
+
     listener();
+
     return () => listener();
   }, []);
   const removeData = async () => {

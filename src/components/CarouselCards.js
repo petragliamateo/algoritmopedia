@@ -18,6 +18,7 @@ function CarouselCards({ categorias }) {
   const cardWidth = width - 60;
   // Largo de la targeta = windowWidth - marginX * 2 - paddingCont * 2.
 
+  // eslint-disable-next-line no-unused-vars
   function renderCard({ item, index }) {
     const cardStyle = {
       width: cardWidth,

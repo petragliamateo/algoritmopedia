@@ -37,8 +37,18 @@ const getPages = async () => {
   }
 };
 
+const getInfo = async () => {
+  try {
+    const result = await axios.get(`${baseUrl}/api/info`);
+    return result.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
 const getOnePost = async () => {};
 
 export {
-  getPosts, getOnePost, getCategories, getPages,
+  getPosts, getOnePost, getCategories, getPages, getInfo,
 };
