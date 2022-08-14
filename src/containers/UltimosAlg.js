@@ -40,7 +40,7 @@ function UltimosAlg({ algoritmos }) {
             style={styles.item}
             onPress={() => navigation.navigate('algoritmo', { algoritmo: alg })}
           >
-            <Linked><Text>{alg.post_title}</Text></Linked>
+            <Linked>{alg.post_title}</Linked>
           </Pressable>
         ))}
       </View>

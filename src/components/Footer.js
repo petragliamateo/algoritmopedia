@@ -1,8 +1,11 @@
+/* eslint-disable react-native/no-raw-text */
 /* eslint-disable react-native/no-inline-styles */
 import {
-  Text, View, StyleSheet, Image,
+  Text, View, StyleSheet, Image, Pressable,
 } from 'react-native';
 import React from 'react';
+
+import AppLink from 'react-native-app-link';
 
 import { RegularText, Linked } from '../customComponents/TextComponents';
 import instagram from '../../assets/icons/instagram.png';
@@ -51,11 +54,26 @@ const styles = StyleSheet.create({
 });
 
 function Footer() {
+  const igConfig = {
+    appName: 'instagram', appStoreId: '389801252', playStoreId: 'com.instagram.android', appStoreLocale: 'us',
+  };
+  const igUrl = 'instagram://user?username=$algoritmopedia';
+  const liConfig = {
+    appName: 'linkedin', appStoreId: '288429040', playStoreId: 'com.linkedin.android', appStoreLocale: 'us',
+  };
+  const liUrl = 'https://www.linkedin.com/company/algoritmopedia/';
+  const openApp = async (url, config) => {
+    await AppLink.maybeOpenURL(url, config);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.views}>
-        <Linked style={styles.text} bold>
-          <Text>Envía tu sugerencia sobre Algoritmopedia</Text>
+        <Linked
+          style={{ fontSize: 16 }}
+          bold
+          to="https://docs.google.com/forms/d/e/1FAIpQLSfd323My1ZYLTv_-bEYdzGpSsPR5NGWIPiYzIkz7UhLq-sDWQ/viewform"
+        >
+          Envía tu sugerencia sobre Algoritmopedia
         </Linked>
       </View>
 
@@ -64,12 +82,18 @@ function Footer() {
           <Text>Redes Sociales:</Text>
         </RegularText>
         <View style={styles.socials}>
-          <View style={{ ...styles.iconContainer, backgroundColor: '#cd2653' }}>
+          <Pressable
+            style={{ ...styles.iconContainer, backgroundColor: '#cd2653' }}
+            onPress={() => openApp(igUrl, igConfig)}
+          >
             <Image style={styles.img} source={instagram} />
-          </View>
-          <View style={{ ...styles.iconContainer, backgroundColor: '#0672ee' }}>
+          </Pressable>
+          <Pressable
+            style={{ ...styles.iconContainer, backgroundColor: '#0672ee' }}
+            onPress={() => openApp(liUrl, liConfig)}
+          >
             <Image style={styles.img} source={linkedin} />
-          </View>
+          </Pressable>
         </View>
       </View>
 

@@ -3,6 +3,7 @@ import React from 'react';
 import {
   View, Button, Image, StyleSheet,
 } from 'react-native';
+import * as Linking from 'expo-linking';
 
 import AlgoritmoFormated from './AlgoritmoFormated';
 import matecodigo from '../../assets/images/matecodigo.png';
@@ -32,7 +33,11 @@ function Algoritmo({ algoritmo }) {
       <View style={styles.footer}>
         <Image style={styles.img} source={matecodigo} />
         <Button title="contenido relacionado" color="#0672ee" />
-        <Button title="corregir este aporte" color="#f08484" />
+        <Button
+          title="corregir este aporte"
+          color="#f08484"
+          onPress={() => Linking.openURL('"https://docs.google.com/forms/d/e/1FAIpQLSfd323My1ZYLTv_-bEYdzGpSsPR5NGWIPiYzIkz7UhLq-sDWQ/viewform"')}
+        />
       </View>
     </View>
   );

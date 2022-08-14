@@ -8,7 +8,7 @@ import {
   View, Text,
 } from 'react-native';
 
-import { RegularText } from '../customComponents/TextComponents';
+import { Linked, RegularText } from '../customComponents/TextComponents';
 import format from '../helpers/formatHtml';
 
 function destructuring(obj = { content: '' }, type = '', fullType = '') {
@@ -24,7 +24,7 @@ function destructuring(obj = { content: '' }, type = '', fullType = '') {
 
 function typeComponent(content, type, fullType) {
   let style;
-  console.log('FT', fullType);
+  // console.log('FT', fullType);
   let bold = false;
   let i1;
   let i2;
@@ -50,11 +50,10 @@ function typeComponent(content, type, fullType) {
       i2 = fullType.indexOf(' ', i1);
       if (i1 === -1) break;
       const href = fullType.slice(i1 + 6, i2 - 1);
-      console.log(href);
       // Pasar href como prop, modificar RegularTest para que tenga Deep Linking
-      style = { color: 'blue', textDecorationLine: 'underline' };
+      style = { textDecorationLine: 'underline', fontSize: 18 };
       return (
-        <RegularText style={style} bold>{content}</RegularText>
+        <Linked style={style} bold to={href}>{content}</Linked>
       );
     case 'img':
       // Tiene la prop de la forma src="https//..."

@@ -8,6 +8,7 @@ import {
   RobotoMono_400Regular_Italic,
 } from '@expo-google-fonts/roboto-mono';
 import AppLoading from 'expo-app-loading';
+import * as Linking from 'expo-linking';
 
 export function Title({ children, style }) {
   const [fontsLoaded] = useFonts({
@@ -77,20 +78,31 @@ export function RegularText({
   );
 }
 
-export function Linked({ children, style }) {
+export function Linked({ children, style, to }) {
   const [fontsLoaded] = useFonts({
     RobotoMono_700Bold,
   });
   if (!fontsLoaded) {
     return <AppLoading />;
   }
+
+  if (to) {
+    return (
+      <Text
+        style={{
+          fontFamily: 'RobotoMono_700Bold', fontSize: 22, color: '#2F7EC8', ...style,
+        }}
+        onPress={() => Linking.openURL(to)}
+      >
+        {children}
+      </Text>
+    );
+  }
+
   return (
     <Text
       style={{
-        fontFamily: 'RobotoMono_700Bold',
-        fontSize: 22,
-        ...style,
-        color: '#2F7EC8',
+        fontFamily: 'RobotoMono_700Bold', fontSize: 22, color: '#2F7EC8', ...style,
       }}
     >
       {children}

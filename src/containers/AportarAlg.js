@@ -3,6 +3,7 @@ import {
   Text, View, StyleSheet, Button, Image,
 } from 'react-native';
 import React from 'react';
+import * as Linking from 'expo-linking';
 
 import { RegularText, Title } from '../customComponents/TextComponents';
 import mateCheck from '../../assets/images/mateformulario.png';
@@ -48,7 +49,7 @@ function AportarAlg() {
             Puedes aportar algoritmos en cualquier lenguaje de programación
           </Text>
         </RegularText>
-        <Button title="APORTAR" />
+        <Button title="APORTAR" onPress={() => Linking.openURL('https://algoritmopedia.org/index.php/aportar/')} />
       </View>
       <Image style={styles.img} source={mateCheck} />
     </View>
