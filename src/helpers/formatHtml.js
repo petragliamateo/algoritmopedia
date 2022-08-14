@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 export default function format(html = '') {
-  const noFooter = removeCommonFooter(html);
+  const fixImg = noClosedTags(html);
+  const noFooter = removeCommonFooter(fixImg);
   const noComment = removeCommentTags(noFooter);
   const noAutoClosed = removeAutoclosedTags(noComment);
   const htmls = transformToJSX(noAutoClosed);
@@ -34,6 +35,25 @@ export function removeCommonFooter(section = '') {
     return section.substring(0, section.indexOf(initFooter));
   }
   return section;
+}
+
+function noClosedTags(section = '') {
+  // Funcion para corregir etiquetas sin cierre JSX
+  // Con las que hay problema son img: <img ... >, no tienen cierre JSX
+  let returnedSection = section;
+
+  let position = 0;
+  while (position !== -1) {
+    const i1 = returnedSection.indexOf('<img', position);
+    if (i1 === -1) break;
+    const i2 = returnedSection.indexOf('>', i1);
+    if (i2 !== returnedSection.indexOf('/>', i1) + 1) {
+      returnedSection = `${returnedSection.slice(0, i2)}/${returnedSection.slice(i2)}`;
+    }
+    position = i2;
+  }
+
+  return returnedSection;
 }
 
 export function removeAutoclosedTags(section = '') {

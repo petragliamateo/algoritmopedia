@@ -5,7 +5,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  View, Text,
+  View, Text, Image,
 } from 'react-native';
 
 import { Linked, RegularText } from '../customComponents/TextComponents';
@@ -62,8 +62,7 @@ function typeComponent(content, type, fullType) {
       if (i1 === -1) break;
       const src = fullType.slice(i1 + 5, i2 - 1);
       console.log(src);
-      // return <Image source={src} />;
-      break;
+      return <View><Image source={{ uri: src }} style={{ width: 300, height: 250 }} /></View>;
     case 'hr':
       // Linea
       break;
