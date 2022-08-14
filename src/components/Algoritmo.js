@@ -7,6 +7,7 @@ import * as Linking from 'expo-linking';
 
 import AlgoritmoFormated from './AlgoritmoFormated';
 import matecodigo from '../../assets/images/matecodigo.png';
+import contenidoRelacionado from '../helpers/contenidoRelacionado';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,11 +33,15 @@ function Algoritmo({ algoritmo }) {
       <AlgoritmoFormated algoritmo={algoritmo} />
       <View style={styles.footer}>
         <Image style={styles.img} source={matecodigo} />
-        <Button title="contenido relacionado" color="#0672ee" />
+        <Button
+          title="contenido relacionado"
+          color="#0672ee"
+          onPress={() => Linking.openURL(contenidoRelacionado(algoritmo))}
+        />
         <Button
           title="corregir este aporte"
           color="#f08484"
-          onPress={() => Linking.openURL('"https://docs.google.com/forms/d/e/1FAIpQLSfd323My1ZYLTv_-bEYdzGpSsPR5NGWIPiYzIkz7UhLq-sDWQ/viewform"')}
+          onPress={() => Linking.openURL('https://docs.google.com/forms/d/e/1FAIpQLSfd323My1ZYLTv_-bEYdzGpSsPR5NGWIPiYzIkz7UhLq-sDWQ/viewform')}
         />
       </View>
     </View>
