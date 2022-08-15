@@ -27,23 +27,34 @@ const styles = StyleSheet.create({
 
 // La data del algoritmo: json string con el documento html.
 
-function Algoritmo({ algoritmo }) {
+function Algoritmo({ algoritmo, guid }) {
   return (
     <View style={styles.container}>
       <AlgoritmoFormated algoritmo={algoritmo} />
-      <View style={styles.footer}>
-        <Image style={styles.img} source={matecodigo} />
-        <Button
-          title="contenido relacionado"
-          color="#0672ee"
-          onPress={() => Linking.openURL(contenidoRelacionado(algoritmo))}
-        />
-        <Button
-          title="corregir este aporte"
-          color="#f08484"
-          onPress={() => Linking.openURL('https://docs.google.com/forms/d/e/1FAIpQLSfd323My1ZYLTv_-bEYdzGpSsPR5NGWIPiYzIkz7UhLq-sDWQ/viewform')}
-        />
-      </View>
+      {guid ? (
+        <View style={{ ...styles.footer, height: 130 }}>
+          <Image style={styles.img} source={matecodigo} />
+          <Button
+            title="Mas informacion"
+            color="#0672ee"
+            onPress={() => Linking.openURL(guid)}
+          />
+        </View>
+      ) : (
+        <View style={styles.footer}>
+          <Image style={styles.img} source={matecodigo} />
+          <Button
+            title="contenido relacionado"
+            color="#0672ee"
+            onPress={() => Linking.openURL(contenidoRelacionado(algoritmo))}
+          />
+          <Button
+            title="corregir este aporte"
+            color="#f08484"
+            onPress={() => Linking.openURL('https://docs.google.com/forms/d/e/1FAIpQLSfd323My1ZYLTv_-bEYdzGpSsPR5NGWIPiYzIkz7UhLq-sDWQ/viewform')}
+          />
+        </View>
+      )}
     </View>
   );
 }

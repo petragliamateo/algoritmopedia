@@ -15,7 +15,7 @@ function AlgoritmoScreen({ props }) {
     <ScrollView>
       <Title>{algoritmo.post_title}</Title>
 
-      <Algoritmo algoritmo={algoritmo.post_content} />
+      <Algoritmo algoritmo={algoritmo.post_content} guid={algoritmo.guid} />
 
       <Footer />
     </ScrollView>

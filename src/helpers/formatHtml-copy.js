@@ -87,54 +87,32 @@ function isATag(section = '') {
 }
 
 function searchTag(document = '') {
-  const html = document;
-
-  // Primer tag
-  const index1 = html.indexOf('<');
-  const index2 = html.indexOf('>', index1);
-  const type = isATag(html.slice(index1, index2 + 1));
-  // Si no es tag, retorno {content}
-  if (!type) return [{ content: html }];
-  const fullType = html.slice(index1 + 1, index2);
-
-  const closeTag = `</${type}>`;
-  let closeTagIndex = html.indexOf(closeTag); // Debe ser el ultimo (while)
-  let content = html.slice(index2 + 1);
-  let position = index2;
-  let relativePosition = 0;
+  // Solo una idea:
+  let html = document;
+  html = html
+    .replace(/<div/g, '<View').replace(/<\/div>/g, '</View>')
+    .replace(/<p/g, '<Text').replace(/<\/p>/g, '</Text>')
+    .replace(/<strong/g, '<Text').replace(/<\/strong>/g, '</Text>')
+    .replace(/<div/g, '<View');
+  /*
   while (true) {
-    closeTagIndex = html.indexOf(closeTag, position);
-    if (closeTagIndex === -1) closeTagIndex = 0;
-    content = html.slice(index2 + 1, closeTagIndex);
-    if (!content.includes(`<${type}`, relativePosition)) {
-      // La posicion real a contar a partir de content es position menos su posicion
-      // Ya que position se mide a partir de html, y es relativo a content.
-      break;
-    }
-    // else: (content incluye un <type> igual)
-    // position = content.indexOf(`<${type}`) + 1;
-    relativePosition = content.indexOf(`<${type}`, relativePosition) + 1;
-    position = closeTagIndex + 1;
-  }
-
-  // Si document no arranca con tag, retorno content hasta el tag
-  const returnArray = [];
-  if (index1 !== 0) returnArray.push({ content: html.slice(0, index1) });
-  // retorno like child
-  // No puedo llamar fotmattingTag3 aca, entonces creo una adaptacion:
-  const contentObj = { type, fullType, children: [] };
-  contentObj.children = searchTag(content);
-  returnArray.push(contentObj);
-
-  const lastIndex = closeTagIndex + type.length + 3;
-  if (lastIndex !== html.length) {
-    const lastPart = searchTag(html.slice(lastIndex));
-    lastPart.forEach((element) => {
-      returnArray.push(element);
-    });
-  }
-
-  return returnArray;
+    const index1 = html.indexOf('<', position);
+    if (index1 === -1) break;
+    const index2 = html.indexOf('>', index1);
+    const type = isATag(html.slice(index1, index2 + 1));
+    const fullType = html.slice(index1 + 1, index2);
+    switch (type) {
+      case 'div':
+        html = html.replace(/<br>/g, '');
+        break;
+        default:
+          html = html.replace(/<br>/g, '');
+          break;
+        }
+      }
+  */
+  console.log(html);
+  return html;
 }
 
 export function formattingTag(html = '') {

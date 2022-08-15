@@ -4,6 +4,7 @@ import {
   Pressable, ScrollView, StyleSheet, Text,
 } from 'react-native';
 import { Linked } from '../customComponents/TextComponents';
+import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,17 +18,19 @@ const styles = StyleSheet.create({
 
 const data = [
   { title: 'Inicio', goto: 'home', id: 1 },
-  { title: '🏆 Copa Algoritmopedia', goto: 'copa', id: 2 },
-  { title: '📚 Biblioteca', goto: 'biblioteca', id: 3 },
+  { title: '📚 Biblioteca', goto: 'biblioteca', id: 2 },
 ];
 
 function MenuModal({ setShowMenu }) {
+  const { pages } = React.useContext(AlgoritmosContext);
   const navigation = useNavigation();
-  const navigateAndClose = (uri = '') => {
+  const navigateAndClose = (uri = '', algoritmo = null) => {
     setShowMenu((p) => !p);
     if (uri) {
       navigation.navigate(uri);
+      return;
     }
+    navigation.navigate('algoritmo', { algoritmo });
   };
   return (
     <ScrollView style={styles.container}>
@@ -42,6 +45,16 @@ function MenuModal({ setShowMenu }) {
           onPress={() => navigateAndClose(item.goto)}
         >
           <Linked>{item.title}</Linked>
+        </Pressable>
+      ))}
+
+      {pages.map((page) => (
+        <Pressable
+          style={styles.items}
+          key={page.date}
+          onPress={() => navigateAndClose(null, page)}
+        >
+          <Linked>{page.post_title}</Linked>
         </Pressable>
       ))}
     </ScrollView>

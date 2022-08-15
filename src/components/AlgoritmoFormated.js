@@ -8,7 +8,8 @@ import {
   View, Text, Image,
 } from 'react-native';
 
-import { Linked, RegularText } from '../customComponents/TextComponents';
+import { Linked, RegularText, Title } from '../customComponents/TextComponents';
+import AutoImage from '../customComponents/AutoImage';
 import format from '../helpers/formatHtml';
 
 function destructuring(obj = { content: '' }, type = '', fullType = '') {
@@ -24,7 +25,7 @@ function destructuring(obj = { content: '' }, type = '', fullType = '') {
 
 function typeComponent(content, type, fullType) {
   let style;
-  // console.log('FT', fullType);
+  console.log('FT', fullType);
   let bold = false;
   let i1;
   let i2;
@@ -38,11 +39,11 @@ function typeComponent(content, type, fullType) {
       break;
     case 'code':
       style = { color: 'green', backgroundColor: 'black', padding: 0 };
-      return <View><RegularText style={style} bold={bold}>{content}</RegularText></View>;
+      return <RegularText style={style} bold={bold}>{content}</RegularText>;
     case 'strong':
       style = { color: 'black' };
       bold = true;
-      content = ` ${content} `;
+      content = `${content}`;
       break;
     case 'a':
       // Tiene la prop de la forma src="https//..."
@@ -57,15 +58,36 @@ function typeComponent(content, type, fullType) {
       );
     case 'img':
       // Tiene la prop de la forma src="https//..."
+      // Y la prop alt="...":
+      i1 = fullType.indexOf('alt=');
+      i2 = fullType.indexOf('"', i1 + 5);
+      const alt = i1 === -1 ? null : fullType.slice(i1 + 5, i2);
+      style = { fontSize: 14 };
       i1 = fullType.indexOf('src=');
       i2 = fullType.indexOf(' ', i1);
       if (i1 === -1) break;
       const src = fullType.slice(i1 + 5, i2 - 1);
-      console.log(src);
-      return <View><Image source={{ uri: src }} style={{ width: 300, height: 250 }} /></View>;
+      return (
+        <View>
+          <AutoImage uri={src} />
+          <RegularText style={style}>
+            {alt}
+            {'\n'}
+          </RegularText>
+        </View>
+      );
     case 'hr':
       // Linea
       break;
+    case 'li':
+      style = { paddingLeft: 5, marginLeft: 5, marginBottom: 5 };
+      break;
+    case 'h1':
+      return <Title style={{ marginVertical: 10 }}>{content}</Title>;
+    case 'h2':
+      return <Title style={{ fontSize: 26, marginVertical: 10 }}>{content}</Title>;
+    case 'h3':
+      return <Title style={{ fontSize: 22, marginVertical: 10 }}>{content}</Title>;
     default:
       break;
   }
@@ -79,9 +101,9 @@ function AlgoritmoFormated({ algoritmo }) {
   return (
     <View>
       {format(algoritmo).children.map((inc, i) => (
-        <Text key={i}>
+        <View key={i}>
           {destructuring(inc)}
-        </Text>
+        </View>
       ))}
     </View>
   );
