@@ -49,6 +49,16 @@ const getInfo = async () => {
 
 const getOnePost = async () => {};
 
+const postExpoToken = async (token) => {
+  try {
+    const result = await axios.post(`${baseUrl}/api/users`, { token });
+    return result.data;
+  } catch (error) {
+    alert('Error inesperado');
+    return null;
+  }
+};
+
 export {
-  getPosts, getOnePost, getCategories, getPages, getInfo,
+  getPosts, getOnePost, getCategories, getPages, getInfo, postExpoToken,
 };

@@ -9,11 +9,13 @@ import {
 
 import Navigation from './src/navigation/Navigation';
 import AlgoritmosContext from './src/contexts/AlgoritmosContext';
+import useNotificationListener from './src/utils/useNotificationListener';
 
 export default function App() {
   const [algoritmosData, setAlgoritmosData] = React.useState({
     algoritmos: [], categorias: [], pages: [],
   });
+  useNotificationListener();
 
   const getData = async () => {
     try {
