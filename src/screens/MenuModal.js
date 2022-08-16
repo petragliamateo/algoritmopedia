@@ -34,7 +34,7 @@ function MenuModal({ setShowMenu }) {
   };
   return (
     <ScrollView style={styles.container}>
-      <Pressable style={styles.items} onPress={() => navigateAndClose()}>
+      <Pressable style={styles.items} onPress={() => setShowMenu((p) => !p)}>
         <Linked><Text>X</Text></Linked>
       </Pressable>
 

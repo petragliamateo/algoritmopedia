@@ -61,7 +61,7 @@ export default function App() {
       // Check si hay algoritmos nuevos
       const info = await getInfo();
       const algCount = Number(info.substring(info.lastIndexOf(' ') + 1));
-      if (algCount === algoritmosData.algoritmos.length) {
+      if (algCount === algData.algoritmos.length) {
         Alert.alert('Matias dice:', 'Algoritmos al dia');
         return;
       }

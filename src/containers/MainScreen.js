@@ -8,6 +8,7 @@ import { Title } from '../customComponents/TextComponents';
 import matecodigo from '../../assets/images/matecodigo.png';
 
 import Search from '../components/Search';
+import Buttoncito from '../customComponents/Buttoncito';
 
 const styles = StyleSheet.create({
   container: {
@@ -36,8 +37,8 @@ function Main({ getData, removeData }) {
         <Search />
       </View>
 
-      <Button title="actualizar" onPress={getData} />
-      <Button title="limpiar cache" onPress={removeData} color="red" />
+      <Buttoncito onPress={getData} title="ACTUALIZAR ALGORITMOS" />
+      <Buttoncito onPress={removeData} title="LIMPIAR CACHE" color="red" />
 
     </View>
   );

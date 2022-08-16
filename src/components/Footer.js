@@ -57,7 +57,7 @@ function Footer() {
   const igConfig = {
     appName: 'instagram', appStoreId: '389801252', playStoreId: 'com.instagram.android', appStoreLocale: 'us',
   };
-  const igUrl = 'instagram://user?username=$algoritmopedia';
+  const igUrl = 'https://www.instagram.com/algoritmopedia/';
   const liConfig = {
     appName: 'linkedin', appStoreId: '288429040', playStoreId: 'com.linkedin.android', appStoreLocale: 'us',
   };
