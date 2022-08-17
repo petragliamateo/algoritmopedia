@@ -51,7 +51,7 @@ function MenuModal({ setShowMenu }) {
       {pages.map((page) => (
         <Pressable
           style={styles.items}
-          key={page.date}
+          key={page.post_date}
           onPress={() => navigateAndClose(null, page)}
         >
           <Linked>{page.post_title}</Linked>

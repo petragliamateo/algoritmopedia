@@ -17,10 +17,13 @@ async function getToken() {
       alert('Failed to get push token for push notification!');
       return null;
     }
+    console.log('here');
     token = (await Notifications.getExpoPushTokenAsync()).data;
+    alert(`Token created: ${token}`);
     console.log(token);
   } else {
     alert('Must use physical device for Push Notifications');
+    return null;
   }
 
   if (Platform.OS === 'android') {

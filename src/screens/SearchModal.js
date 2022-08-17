@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Pressable } from 'react-native';
-import { Search } from '../components';
+import Search from '../components/Search';
 
 const styles = StyleSheet.create({
   container: {

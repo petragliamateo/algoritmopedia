@@ -5,7 +5,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  View, Text, Image,
+  View,
 } from 'react-native';
 
 import { Linked, RegularText, Title } from '../customComponents/TextComponents';
@@ -39,7 +39,7 @@ function typeComponent(content, type, fullType) {
       break;
     case 'code':
       style = { color: 'green', backgroundColor: 'black', padding: 0 };
-      return <RegularText style={style} bold={bold}>{content}</RegularText>;
+      return <RegularText key={content} style={style} bold={bold}>{content}</RegularText>;
     case 'strong':
       style = { color: 'black' };
       bold = true;
@@ -54,7 +54,7 @@ function typeComponent(content, type, fullType) {
       // Pasar href como prop, modificar RegularTest para que tenga Deep Linking
       style = { textDecorationLine: 'underline', fontSize: 18 };
       return (
-        <Linked style={style} bold to={href}>{content}</Linked>
+        <Linked key={href} style={style} bold to={href}>{content}</Linked>
       );
     case 'img':
       // Tiene la prop de la forma src="https//..."
@@ -64,11 +64,11 @@ function typeComponent(content, type, fullType) {
       const alt = i1 === -1 ? null : fullType.slice(i1 + 5, i2);
       style = { fontSize: 14 };
       i1 = fullType.indexOf('src=');
-      i2 = fullType.indexOf(' ', i1);
+      i2 = fullType.indexOf('"', i1 + 5);
       if (i1 === -1) break;
-      const src = fullType.slice(i1 + 5, i2 - 1);
+      const src = fullType.slice(i1 + 5, i2);
       return (
-        <View>
+        <View key={src}>
           <AutoImage uri={src} />
           <RegularText style={style}>
             {alt}
@@ -83,15 +83,15 @@ function typeComponent(content, type, fullType) {
       style = { paddingLeft: 5, marginLeft: 5, marginBottom: 5 };
       break;
     case 'h1':
-      return <Title style={{ marginVertical: 10 }}>{content}</Title>;
+      return <Title key={content} style={{ marginVertical: 10 }}>{content}</Title>;
     case 'h2':
-      return <Title style={{ fontSize: 26, marginVertical: 10 }}>{content}</Title>;
+      return <Title key={content} style={{ fontSize: 26, marginVertical: 10 }}>{content}</Title>;
     case 'h3':
-      return <Title style={{ fontSize: 22, marginVertical: 10 }}>{content}</Title>;
+      return <Title key={content} style={{ fontSize: 22, marginVertical: 10 }}>{content}</Title>;
     default:
       break;
   }
-  return <RegularText style={style} bold={bold}>{content}</RegularText>;
+  return <RegularText key={content} style={style} bold={bold}>{content}</RegularText>;
 }
 
 // La data del algoritmo: json string con el documento html.

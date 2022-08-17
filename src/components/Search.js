@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import {
   useFonts, RobotoMono_400Regular,
 } from '@expo-google-fonts/roboto-mono';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 
 import { useNavigation } from '@react-navigation/native';
 import searchIcon from '../../assets/icons/search.png';
@@ -52,11 +52,22 @@ function Search({ searchTerm, setSearchTerm, autoFocus }) {
   const [fontsLoaded] = useFonts({
     RobotoMono_400Regular,
   });
+  const onLayoutRootView = React.useCallback(async () => {
+    if (fontsLoaded) {
+      // This tells the splash screen to hide immediately! If we call this after
+      // `setAppIsReady`, then we may see a blank screen while the app is
+      // loading its initial state and rendering its first pixels. So instead,
+      // we hide the splash screen once we know the root view has already
+      // performed layout.
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
   return (
-    <View style={styles.inputContainer}>
+    <View style={styles.inputContainer} onLayout={onLayoutRootView}>
       <TextInput
         style={{
           alignSelf: 'center',

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "algoritmopediaApp",
+    "name": "algoritmopedia",
     "slug": "algoritmopediaApp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,6 +22,8 @@
     },
     "android": {
       "package": "com.algoritmopedia.algoritmopedia",
+      "versionCode": 1,
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"

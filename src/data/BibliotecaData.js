@@ -3,10 +3,10 @@ export default {
   lista: [
     {
       title: 'Lenguajes de programación:',
+      id: 1,
       content: [
         {
           title: 'Python',
-          id: 1,
           imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/2048px-Python-logo-notext.svg.png',
           buttons: [
             { buttonTitle: 'Sintaxis Basica', url: '/' },

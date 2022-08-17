@@ -23,9 +23,10 @@ export default function useNotificationListener() {
 
   useEffect(() => {
     notificationGetToken().then((token) => {
+      console.log('Token:', token);
       setExpoPushToken(token);
       sendNotificationDemo(token);
-      postExpoToken(token).then(alert('token online'));
+      if (token) postExpoToken(token).then(alert('token online'));
     });
 
     // This listener is fired whenever a notification is received while the app is foregrounded
@@ -44,4 +45,6 @@ export default function useNotificationListener() {
       Notifications.removeNotificationSubscription(responseListener.current);
     };
   }, []);
+
+  return expoPushToken;
 }

@@ -25,7 +25,7 @@ function AlgoritmoContainer({ algoritmoNames }) {
       {algoritmos
         .filter((a) => algoritmoNames.includes(a.post_name))
         .map((alg) => (
-          <View style={styles.algItem}>
+          <View style={styles.algItem} key={alg.post_date}>
             <Title>{alg.post_title}</Title>
             <Algoritmo algoritmo={alg.post_content} />
           </View>

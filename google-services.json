@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "625987013504",
+    "project_id": "algoritmopedia-push-notis",
+    "storage_bucket": "algoritmopedia-push-notis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625987013504:android:f512451fa27078fdb24f65",
+        "android_client_info": {
+          "package_name": "com.algoritmopedia.algoritmopedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625987013504-2mfptbh53cthcp42688nrs8hu4a79bjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDId90Rapd9iIIUGrV090HurmcfAJtjQBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625987013504-2mfptbh53cthcp42688nrs8hu4a79bjk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

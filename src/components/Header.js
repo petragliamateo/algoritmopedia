@@ -6,7 +6,8 @@ import {
 import algoritmopedia from '../../assets/images/algoritmopediaclaro.png';
 import searchIcon from '../../assets/icons/searchBlack.png';
 import dotsIcon from '../../assets/icons/three-dots.png';
-import { MenuModal, SearchModal } from '../screens';
+import MenuModal from '../screens/MenuModal';
+import SearchModal from '../screens/SearchModal';
 import { MiniText } from '../customComponents/TextComponents';
 
 function Navbar() {

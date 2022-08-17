@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
-  Image, Text, View, StyleSheet, Button,
+  Image, Text, View, StyleSheet,
 } from 'react-native';
 import React from 'react';
 
@@ -9,6 +9,8 @@ import matecodigo from '../../assets/images/matecodigo.png';
 
 import Search from '../components/Search';
 import Buttoncito from '../customComponents/Buttoncito';
+import useNotificationListener from '../utils/useNotificationListener';
+import sendPushNotification from '../utils/sendNotificationDemo';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,6 +28,7 @@ const styles = StyleSheet.create({
 });
 
 function Main({ getData, removeData }) {
+  const token = useNotificationListener();
   return (
     <View style={styles.container}>
       <Title>
@@ -39,6 +42,12 @@ function Main({ getData, removeData }) {
 
       <Buttoncito onPress={getData} title="ACTUALIZAR ALGORITMOS" />
       <Buttoncito onPress={removeData} title="LIMPIAR CACHE" color="red" />
+      <Buttoncito onPress={() => sendPushNotification(token)} title="notification demo" color="green" />
+      <Text>
+        Token:
+        {' '}
+        {token}
+      </Text>
 
     </View>
   );
