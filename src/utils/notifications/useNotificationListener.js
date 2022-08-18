@@ -4,8 +4,10 @@ import { useState, useRef, useEffect } from 'react';
 import * as Notifications from 'expo-notifications';
 
 import notificationGetToken from './notificationGetToken';
-import { postExpoToken } from '../services/algoritmos';
+import { postExpoToken } from '../../services/algoritmos';
 import sendNotificationDemo from './sendNotificationDemo';
+import schedulePushNotification from './sheudleNotification';
+import useNotificationWhenOpenApp from './useNotificationWhenOpenApp';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({

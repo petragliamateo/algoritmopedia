@@ -4,28 +4,27 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import {
-  Home, Biblioteca, Copa, Categorias, AlgoritmoScreen, AllAlgoritmos,
+  Home, Biblioteca, Categorias, AlgoritmoScreen, AllAlgoritmos, Configuration,
 } from '../screens';
-import Header from '../components/Header';
 
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="home" screenOptions={{ header: () => <Header /> }}>
-        <Stack.Screen name="home" component={Home} />
+      <Stack.Navigator initialRouteName="home">
+        <Stack.Screen name="home" component={Home} options={{ header: () => null }} />
         <Stack.Screen name="biblioteca" component={Biblioteca} />
-        <Stack.Screen name="copa" component={Copa} />
-        <Stack.Screen name="categorias">
+        <Stack.Screen name="categorias" options={{ header: () => null }}>
           {(props) => <Categorias props={props.route.params} />}
         </Stack.Screen>
-        <Stack.Screen name="algoritmo">
+        <Stack.Screen name="algoritmo" options={{ header: () => null }}>
           {(props) => <AlgoritmoScreen props={props.route.params} />}
         </Stack.Screen>
-        <Stack.Screen name="allAlgoritmos">
+        <Stack.Screen name="allAlgoritmos" options={{ header: () => null }}>
           {(props) => <AllAlgoritmos props={props.route.params} />}
         </Stack.Screen>
+        <Stack.Screen name="configuration" component={Configuration} />
       </Stack.Navigator>
     </NavigationContainer>
   );

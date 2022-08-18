@@ -4,7 +4,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 
 import { RegularText, Title } from '../customComponents/TextComponents';
-import { Footer } from '../components';
+import { Footer, Header } from '../components';
 import AlgoritmoContainer from '../containers/AlgoritmoContainer';
 
 function Categorias({ props }) {
@@ -15,7 +15,8 @@ function Categorias({ props }) {
   };
 
   return (
-    <ScrollView>
+    <ScrollView stickyHeaderIndices={[0]} stickyHeaderHiddenOnScroll>
+      <Header />
       <Title style={commonStyle}>
         {`Categoria: ${category.name}`}
       </Title>

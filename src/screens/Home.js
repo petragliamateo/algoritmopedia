@@ -7,18 +7,19 @@ import React from 'react';
 import {
   MainScreen, Categorias, UltimosAlg, AportarAlg,
 } from '../containers';
-import { Footer, FullScreen } from '../components';
+import { Footer, FullScreen, Header } from '../components';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 function Home() {
-  const { algoritmos, reloadData, removeData } = React.useContext(AlgoritmosContext);
+  const { algoritmos } = React.useContext(AlgoritmosContext);
   // Ordenar algoritmos por fecha
   const lastest = algoritmos.slice(algoritmos.length - 3, algoritmos.length);
   const color = '#2F7EC8';
   return (
-    <ScrollView>
-      <FullScreen>
-        <MainScreen getData={reloadData} removeData={removeData} />
+    <ScrollView stickyHeaderIndices={[0]} stickyHeaderHiddenOnScroll>
+      <Header />
+      <FullScreen deltaHeight={60}>
+        <MainScreen />
       </FullScreen>
 
       <FullScreen bg={color}>

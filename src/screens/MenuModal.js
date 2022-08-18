@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-raw-text */
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
@@ -57,6 +58,13 @@ function MenuModal({ setShowMenu }) {
           <Linked>{page.post_title}</Linked>
         </Pressable>
       ))}
+
+      <Pressable
+        style={styles.items}
+        onPress={() => navigateAndClose('configuration')}
+      >
+        <Linked>Configuracion</Linked>
+      </Pressable>
     </ScrollView>
   );
 }
