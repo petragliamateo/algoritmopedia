@@ -1,13 +1,9 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { useState, useRef, useEffect } from 'react';
 import * as Notifications from 'expo-notifications';
 
 import notificationGetToken from './notificationGetToken';
 import { postExpoToken } from '../../services/algoritmos';
-import sendNotificationDemo from './sendNotificationDemo';
-import schedulePushNotification from './sheudleNotification';
-import useNotificationWhenOpenApp from './useNotificationWhenOpenApp';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -19,16 +15,15 @@ Notifications.setNotificationHandler({
 
 export default function useNotificationListener() {
   const [expoPushToken, setExpoPushToken] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
 
   useEffect(() => {
     notificationGetToken().then((token) => {
-      console.log('Token:', token);
       setExpoPushToken(token);
-      sendNotificationDemo(token);
-      if (token) postExpoToken(token).then(alert('token online'));
+      if (token) postExpoToken(token);
     });
 
     // This listener is fired whenever a notification is received while the app is foregrounded

@@ -13,7 +13,7 @@ function Configuration() {
     <ScrollView>
       <Buttoncito onPress={reloadData} title="ACTUALIZAR ALGORITMOS" />
       <Buttoncito onPress={removeData} title="LIMPIAR CACHE" color="red" />
-      <Buttoncito onPress={async () => { await sheudleNotification(0); }} title="instant notification demo" color="yellow" />
+      <Buttoncito onPress={async () => { await sheudleNotification(2); }} title="instant notification demo" color="yellow" />
       <Buttoncito onPress={() => sendPushNotification(token)} title="push notification demo" color="green" />
       <Text>
         Token:
