@@ -1,4 +1,4 @@
-apk: https://expo.dev/accounts/petragliamateo/projects/algoritmopediaApp/builds/9fb5fd19-d1f1-4c49-a89b-38bf98a3518a
+apk: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40petragliamateo/algoritmopediaApp-90957a5a713e45448b3ce98078d262f2-signed.apk
 
 aab: https://expo.dev/artifacts/c7e09786-ed2b-4ba9-a245-6222d48ae35c
 
