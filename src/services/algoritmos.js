@@ -27,9 +27,9 @@ const getCategories = async () => {
 
 const getPages = async () => {
   try {
-    const copa = await axios.get(`${baseUrl}/api/pages/copa`);
+    // const copa = await axios.get(`${baseUrl}/api/pages/copa`);
     const retos = await axios.get(`${baseUrl}/api/pages/retos`);
-    return [copa.data, retos.data];
+    return [retos.data];
   } catch (error) {
     Alert.alert('Error', 'Error del servidor.');
     console.log(error);

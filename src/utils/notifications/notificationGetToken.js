@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable no-alert */
 import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device';
 import { Platform } from 'react-native';
@@ -19,10 +18,10 @@ async function getToken() {
     }
     console.log('here');
     token = (await Notifications.getExpoPushTokenAsync()).data;
-    alert(`Token created: ${token}`);
+    // alert(`Token created: ${token}`);
     console.log(token);
   } else {
-    alert('Must use physical device for Push Notifications');
+    // alert('Must use physical device for Push Notifications');
     return null;
   }
 

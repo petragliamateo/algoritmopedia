@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   item: {
     padding: 20,
     borderWidth: 1,
-    width: 330,
     margin: 10,
   },
 });

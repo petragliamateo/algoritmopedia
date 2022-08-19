@@ -2,7 +2,7 @@
   "expo": {
     "name": "algoritmopedia",
     "slug": "algoritmopediaApp",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/favicon.png",
     "userInterfaceStyle": "light",
@@ -25,7 +25,7 @@
       "versionCode": 1,
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/favicon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
@@ -36,7 +36,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/favicon.png",
+          "icon": "./assets/notificationIcon.png",
           "color": "#2F7EC8",
           "sounds": []
         }
