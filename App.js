@@ -7,6 +7,10 @@ import useNotificationListener from './src/utils/notifications/useNotificationLi
 import useMovileStorage from './src/utils/storage/useMovileStorage';
 import useNotificationWhenOpenApp from './src/utils/notifications/useNotificationWhenOpenApp';
 
+// import matecodigo from './assets/images/matecodigo.png';
+import matecodigo from './assets/icon.png';
+import AnimatedAppLoader from './src/components/AnimatedAppLoader';
+
 export default function App() {
   const storageData = useMovileStorage();
   // storageData = { algoritmos, categorias, pages, reloadData, removeData }
@@ -15,8 +19,10 @@ export default function App() {
   useNotificationWhenOpenApp();
 
   return (
-    <AlgoritmosContext.Provider value={{ ...storageData }}>
-      <Navigation />
-    </AlgoritmosContext.Provider>
+    <AnimatedAppLoader image={matecodigo}>
+      <AlgoritmosContext.Provider value={{ ...storageData }}>
+        <Navigation />
+      </AlgoritmosContext.Provider>
+    </AnimatedAppLoader>
   );
 }

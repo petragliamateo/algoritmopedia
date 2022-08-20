@@ -60,7 +60,7 @@ export default function useMovileStorage() {
       const info = await getInfo();
       const algCount = Number(info.substring(info.lastIndexOf(' ') + 1));
       if (algCount === algData.algoritmos.length) {
-        Alert.alert('Matias dice:', 'Algoritmos al dia');
+        // Alert.alert('Matias dice:', 'Algoritmos al dia');
         return;
       }
       Alert.alert(
