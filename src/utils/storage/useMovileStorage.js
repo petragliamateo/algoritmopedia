@@ -1,9 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 import { Alert } from 'react-native';
+import { removeCommonFooter } from '../../helpers/formatHtml';
 import {
   getCategories, getInfo, getPages, getPosts,
 } from '../../services/algoritmos';
+import downloadAllImages from './downloadAllImages';
 
 export default function useMovileStorage() {
   const [algoritmosData, setAlgoritmosData] = React.useState({
@@ -31,6 +33,7 @@ export default function useMovileStorage() {
     const algoritmos = await getPosts();
     const categorias = await getCategories();
     const pages = await getPages();
+    await downloadAllImages(algoritmos.map((a) => removeCommonFooter(a.post_content)));
     const data = { algoritmos, categorias, pages };
     if (data) {
       await saveData(data);

@@ -11,6 +11,7 @@ import {
 import { Linked, RegularText, Title } from '../customComponents/TextComponents';
 import AutoImage from '../customComponents/AutoImage';
 import format from '../helpers/formatHtml';
+import fileManager from '../utils/storage/fileManager';
 
 function destructuring(obj = { content: '' }, type = '', fullType = '') {
   if (obj.content || obj.content === '') {
@@ -67,9 +68,11 @@ function typeComponent(content, type, fullType) {
       i2 = fullType.indexOf('"', i1 + 5);
       if (i1 === -1) break;
       const src = fullType.slice(i1 + 5, i2);
+      // Las imagenes se descargan, getPath devuelve el path al archivo segun su src:
+      const path = fileManager.getPath(src);
       return (
         <View key={src}>
-          <AutoImage uri={src} />
+          <AutoImage uri={path} />
           <RegularText style={style}>
             {alt}
             {'\n'}

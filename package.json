@@ -31,7 +31,8 @@
     "react-native-app-link": "^1.0.1",
     "react-native-safe-area-context": "4.2.4",
     "react-native-snap-carousel": "^3.9.1",
-    "react-native-web": "0.17.7"
+    "react-native-web": "0.17.7",
+    "expo-file-system": "~14.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",

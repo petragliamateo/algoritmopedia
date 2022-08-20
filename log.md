@@ -1,8 +1,8 @@
-
-
 ## Storage
-  en src/storage se encuentran los archivos dedicados a esto.
-  Hook useMovileStorage: Hook personalizado que utiliza la libreria AsyncStorage. devuelve un objeto con varios metodos y propiedades relacionados con el storage para esta aplicacion, como los datos de los algoritmos y paginas, y funciones para eliminar o recargar estos datos.
+  en src/utils/storage se encuentran los archivos dedicados a esto.
+  Hook useMovileStorage: Hook personalizado que utiliza la libreria AsyncStorage. devuelve un objeto con varios metodos y propiedades relacionados con el storage para esta aplicacion, como los datos de los algoritmos y paginas, y funciones para eliminar o recargar estos datos. Tambien descarga todas las imagenes de los algoritmos para poder verlos sin conexion.
+  fileManager: conjunto de funciones que utilizan la libreria expo-file-system, entre estas funciones estan downloadFile, que descarga un archivo especificando la url y el nombre a definir, deleteFile para eliminar o deleteAllFiles que elimina el directorio. Todos los archivos descargados se guardan en un directorio que se crea la primera vez que se descarga un archivo.
+  downloadAllImages: funcion que se le pasa el array con todos los documentos html de los algoritmos o paginas y descarga todas las imagenes.
 
 ## Push Notifications
   en src/notifications estan los archivos dedicados a estos.
