@@ -26,7 +26,7 @@ function destructuring(obj = { content: '' }, type = '', fullType = '') {
 
 function typeComponent(content, type, fullType) {
   let style;
-  console.log('FT', fullType);
+  // console.log('FT', fullType);
   let bold = false;
   let i1;
   let i2;

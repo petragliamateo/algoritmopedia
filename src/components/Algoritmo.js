@@ -11,6 +11,7 @@ import contenidoRelacionado from '../helpers/contenidoRelacionado';
 
 const styles = StyleSheet.create({
   container: {
+    marginHorizontal: 15,
   },
   footer: {
     display: 'flex',
