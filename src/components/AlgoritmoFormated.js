@@ -101,6 +101,7 @@ function typeComponent(content, type, fullType) {
 
 function AlgoritmoFormated({ algoritmo }) {
   // Que los objetos retornen dentro de un Text hace que sigan la linea.
+  // console.log(format(algoritmo));
   return (
     <View>
       {format(algoritmo).children.map((inc, i) => (
