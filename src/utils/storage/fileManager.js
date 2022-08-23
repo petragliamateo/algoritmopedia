@@ -23,7 +23,7 @@ async function downloadFile(url = '', fileName = 'default.png') {
 async function ensureDirExists() {
   const dirInfo = await FileSystem.getInfoAsync(directory);
   if (!dirInfo.exists) {
-    console.log("Gif directory doesn't exist, creating...");
+    console.log("directory doesn't exist, creating...");
     await FileSystem.makeDirectoryAsync(directory, { intermediates: true });
   }
 }

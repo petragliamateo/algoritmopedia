@@ -44,7 +44,7 @@ export default function useMovileStorage() {
     const listener = async () => {
       const algData = await getData();
       // Si no hay storage en el movil pregunto si deseo cargar:
-      if (algData) {
+      if (algData && !Array.isArray(algData)) {
         setAlgoritmosData(algData);
       } else {
         Alert.alert(
