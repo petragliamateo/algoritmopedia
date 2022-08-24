@@ -4,8 +4,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import {
-  Home, Biblioteca, Categorias, AlgoritmoScreen, AllAlgoritmos, Configuration,
+  Home, Categorias, AlgoritmoScreen, AllAlgoritmos, Configuration,
 } from '../screens';
+import NavbarBottom from '../components/NavBarBottom';
+import { HomeHeader } from '../components';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,8 +15,7 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="home">
-        <Stack.Screen name="home" component={Home} options={{ header: () => null }} />
-        <Stack.Screen name="biblioteca" component={Biblioteca} />
+        <Stack.Screen name="home" component={Home} options={{ header: () => <HomeHeader /> }} />
         <Stack.Screen name="categorias" options={{ header: () => null }}>
           {(props) => <Categorias props={props.route.params} />}
         </Stack.Screen>
@@ -26,6 +27,7 @@ export default function Navigation() {
         </Stack.Screen>
         <Stack.Screen name="configuration" component={Configuration} />
       </Stack.Navigator>
+      <NavbarBottom />
     </NavigationContainer>
   );
 }

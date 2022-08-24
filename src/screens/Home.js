@@ -7,7 +7,7 @@ import React from 'react';
 import {
   MainScreen, Categorias, UltimosAlg, AportarAlg,
 } from '../containers';
-import { Footer, FullScreen, Header } from '../components';
+import { Footer, FullScreen } from '../components';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 function Home() {
@@ -16,8 +16,7 @@ function Home() {
   const lastest = algoritmos.slice(algoritmos.length - 3, algoritmos.length);
   const color = '#2F7EC8';
   return (
-    <ScrollView stickyHeaderIndices={[0]} stickyHeaderHiddenOnScroll>
-      <Header />
+    <ScrollView>
       <FullScreen deltaHeight={60}>
         <MainScreen />
       </FullScreen>

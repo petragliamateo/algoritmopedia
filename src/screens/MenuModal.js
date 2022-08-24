@@ -17,11 +17,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const data = [
-  { title: 'Inicio', goto: 'home', id: 1 },
-  { title: '📚 Biblioteca', goto: 'biblioteca', id: 2 },
-];
-
 function MenuModal({ setShowMenu }) {
   const { pages } = React.useContext(AlgoritmosContext);
   const navigation = useNavigation();
@@ -39,15 +34,12 @@ function MenuModal({ setShowMenu }) {
         <Linked><Text>X</Text></Linked>
       </Pressable>
 
-      {data.map((item) => (
-        <Pressable
-          style={styles.items}
-          key={item.id}
-          onPress={() => navigateAndClose(item.goto)}
-        >
-          <Linked>{item.title}</Linked>
-        </Pressable>
-      ))}
+      <Pressable
+        style={styles.items}
+        onPress={() => navigateAndClose('home')}
+      >
+        <Linked>Inicio</Linked>
+      </Pressable>
 
       {pages.map((page) => (
         <Pressable

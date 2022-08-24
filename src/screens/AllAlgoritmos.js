@@ -7,13 +7,14 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 import { Linked } from '../customComponents/TextComponents';
-import { Search, Footer, Header } from '../components';
+import { Search, Footer } from '../components';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 35,
     paddingHorizontal: 15,
+    minHeight: 400,
   },
   itemsContainer: {
     display: 'flex',
@@ -24,6 +25,9 @@ const styles = StyleSheet.create({
     padding: 20,
     borderWidth: 1,
     margin: 10,
+  },
+  search: {
+    padding: 10,
   },
 });
 
@@ -37,9 +41,10 @@ function AllAlgoritmos({ props }) {
       .includes(searchTerm.toLowerCase())
   ));
   return (
-    <ScrollView stickyHeaderIndices={[0]} stickyHeaderHiddenOnScroll>
-      <Header />
-      <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+    <ScrollView>
+      <View style={styles.search}>
+        <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+      </View>
 
       <View style={styles.container}>
         <View style={styles.itemsContainer}>

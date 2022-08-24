@@ -5,7 +5,7 @@ import { Pressable, ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { Linked, Title } from '../customComponents/TextComponents';
-import { Footer, Header } from '../components';
+import { Footer } from '../components';
 import Algoritmo from '../components/Algoritmo';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
@@ -18,8 +18,7 @@ function AlgoritmoScreen({ props }) {
     next: algoritmos[index + 1], prev: algoritmos[index - 1],
   };
   return (
-    <ScrollView stickyHeaderIndices={[0]} stickyHeaderHiddenOnScroll>
-      <Header />
+    <ScrollView>
       <Title>{algoritmo.post_title}</Title>
 
       <Algoritmo algoritmo={algoritmo.post_content} guid={algoritmo.guid} />
