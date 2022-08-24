@@ -7,7 +7,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 import { Linked } from '../customComponents/TextComponents';
-import { Search, Footer } from '../components';
+import { Search } from '../components';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 const styles = StyleSheet.create({
@@ -67,8 +67,6 @@ function AllAlgoritmos({ props }) {
           ))}
         </View>
       </View>
-
-      <Footer />
     </ScrollView>
   );
 }

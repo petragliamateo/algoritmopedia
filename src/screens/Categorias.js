@@ -5,7 +5,6 @@ import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { RegularText, Title } from '../customComponents/TextComponents';
-import { Footer } from '../components';
 import AlgoritmoContainer from '../containers/AlgoritmoContainer';
 
 function Categorias({ props }) {
@@ -26,8 +25,6 @@ function Categorias({ props }) {
       <RegularText style={commonStyle}>{category.description}</RegularText>
 
       <AlgoritmoContainer algoritmoNames={category.childrenNames} />
-
-      <Footer />
     </ScrollView>
   );
 }

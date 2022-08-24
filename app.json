@@ -4,7 +4,7 @@
     "slug": "algoritmopediaApp",
     "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./assets/favicon.png",
+    "icon": "./assets/adaptive-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/icon.png",

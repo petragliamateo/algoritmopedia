@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react-native/no-raw-text */
 import React from 'react';
 import { Image, ScrollView, Text } from 'react-native';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
@@ -6,6 +8,8 @@ import useNotificationListener from '../utils/notifications/useNotificationListe
 import sendPushNotification from '../utils/notifications/sendNotificationDemo';
 import sheudleNotification from '../utils/notifications/sheudleNotification';
 import fileManager from '../utils/storage/fileManager';
+import { MiniText } from '../customComponents/TextComponents';
+import { Footer } from '../components';
 
 function Configuration() {
   const [temp, setTemp] = React.useState('file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540petragliamateo%252FalgoritmopediaApp/algoritmopedia/header_logo.png');
@@ -19,7 +23,7 @@ function Configuration() {
           await removeData();
           await fileManager.deleteAll();
         }}
-        title="LIMPIAR CACHE"
+        title="BORRAR DATOS"
         color="red"
       />
       <Buttoncito onPress={async () => { await sheudleNotification(2); }} title="instant notification demo" color="yellow" />
@@ -40,6 +44,9 @@ function Configuration() {
       <Image source={{ uri: temp }} style={{ width: 140, height: 140 }} />
       <Text>{temp}</Text>
       <Buttoncito onPress={async () => { await fileManager.deleteFile('header_logo.png'); }} title="delete file demo" color="#ccc" />
+      <MiniText>Estado: Beta</MiniText>
+      <MiniText>Algoritmopedia 2022</MiniText>
+      <Footer />
     </ScrollView>
   );
 }

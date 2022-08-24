@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 35,
     paddingVertical: 15,
-    marginBottom: 60,
   },
   views: {
     display: 'flex',

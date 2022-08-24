@@ -5,7 +5,6 @@ import { Pressable, ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { Linked, Title } from '../customComponents/TextComponents';
-import { Footer } from '../components';
 import Algoritmo from '../components/Algoritmo';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
@@ -45,8 +44,6 @@ function AlgoritmoScreen({ props }) {
           )}
         </View>
       )}
-
-      <Footer />
     </ScrollView>
   );
 }

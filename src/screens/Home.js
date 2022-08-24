@@ -7,7 +7,7 @@ import React from 'react';
 import {
   MainScreen, Categorias, UltimosAlg, AportarAlg,
 } from '../containers';
-import { Footer, FullScreen } from '../components';
+import { FullScreen } from '../components';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 function Home() {
@@ -32,8 +32,6 @@ function Home() {
       <FullScreen bg={color}>
         <AportarAlg />
       </FullScreen>
-
-      <Footer />
     </ScrollView>
   );
 }
