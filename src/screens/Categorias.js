@@ -2,17 +2,20 @@
 /* eslint-disable react-native/no-raw-text */
 import React from 'react';
 import { ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { RegularText, Title } from '../customComponents/TextComponents';
 import { Footer } from '../components';
 import AlgoritmoContainer from '../containers/AlgoritmoContainer';
 
 function Categorias({ props }) {
+  const navigation = useNavigation();
   const { category } = props;
   const commonStyle = {
     marginVertical: 10,
     textAlign: 'center',
   };
+  navigation.setOptions({ title: category.name });
 
   return (
     <ScrollView>

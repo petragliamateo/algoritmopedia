@@ -16,10 +16,10 @@ export default function Navigation() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="home">
         <Stack.Screen name="home" component={Home} options={{ header: () => <HomeHeader /> }} />
-        <Stack.Screen name="categorias" options={{ header: () => null }}>
+        <Stack.Screen name="categorias">
           {(props) => <Categorias props={props.route.params} />}
         </Stack.Screen>
-        <Stack.Screen name="algoritmo" options={{ header: () => null }}>
+        <Stack.Screen name="algoritmo">
           {(props) => <AlgoritmoScreen props={props.route.params} />}
         </Stack.Screen>
         <Stack.Screen name="allAlgoritmos" options={{ header: () => null }}>

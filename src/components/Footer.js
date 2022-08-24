@@ -14,7 +14,6 @@ import linkedin from '../../assets/icons/linkedin.png';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#333333',
-    borderTopWidth: 2,
     height: '100%',
     display: 'flex',
     alignItems: 'center',

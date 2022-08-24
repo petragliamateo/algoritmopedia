@@ -10,7 +10,7 @@ function HomeHeader() {
     container: {
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
       alignItems: 'center',
       height: 60,
       backgroundColor: '#fff',

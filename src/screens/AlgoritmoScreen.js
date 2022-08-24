@@ -17,6 +17,8 @@ function AlgoritmoScreen({ props }) {
   const alg = {
     next: algoritmos[index + 1], prev: algoritmos[index - 1],
   };
+  navigation.setOptions({ title: algoritmo.post_title });
+
   return (
     <ScrollView>
       <Title>{algoritmo.post_title}</Title>

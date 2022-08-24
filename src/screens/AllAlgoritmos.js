@@ -27,7 +27,15 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   search: {
-    padding: 10,
+    padding: 15,
+    backgroundColor: '#fff',
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 5,
+    shadowOpacity: 1.0,
+    elevation: 5,
   },
 });
 
@@ -41,7 +49,7 @@ function AllAlgoritmos({ props }) {
       .includes(searchTerm.toLowerCase())
   ));
   return (
-    <ScrollView>
+    <ScrollView stickyHeaderIndices={[0]}>
       <View style={styles.search}>
         <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       </View>
