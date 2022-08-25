@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useEffect, useState } from 'react';
 import {
-  Image, Pressable, StyleSheet, View, Modal, useWindowDimensions,
+  Image, Pressable, StyleSheet, View, Modal,
 } from 'react-native';
 import { useNavigation, useNavigationState } from '@react-navigation/native';
 
@@ -16,7 +16,6 @@ import searchIconFill from '../../assets/icons/search-heart-fill.png';
 function NavbarBottom() {
   const [currentScreen, setCurrentScreen] = useState('home');
   const [showMenu, setShowMenu] = useState(false);
-  const { height } = useWindowDimensions();
   const navigation = useNavigation();
   const state = useNavigationState((st) => st);
 
@@ -34,9 +33,9 @@ function NavbarBottom() {
       alignItems: 'center',
       height: 60,
       backgroundColor: '#fff',
-      paddingHorizontal: 25,
+      paddingHorizontal: 35,
       position: 'absolute',
-      top: height - 60,
+      bottom: 0,
       width: '100%',
       shadowColor: 'black',
       shadowOffset: { width: 0, height: 3 },

@@ -1,9 +1,9 @@
 import { useWindowDimensions, View } from 'react-native';
 import React from 'react';
 
-function FullScreen({ children, bg, deltaHeight = 0 }) {
+function FullScreen({ children, bg }) {
   let { height } = useWindowDimensions();
-  height -= deltaHeight;
+  height -= 120;
   const backgroundColor = bg;
   return (
     <View style={{ height, backgroundColor }}>

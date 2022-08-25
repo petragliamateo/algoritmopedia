@@ -1,4 +1,4 @@
-apk: https://expo.dev/artifacts/7e7d4f08-37a1-4e8e-a54f-eb392f260150
+apk: https://expo.dev/artifacts/dd4c6fa1-dcb6-4f78-8f7a-37a4432ea8f8
 
 aab: https://expo.dev/artifacts/c7e09786-ed2b-4ba9-a245-6222d48ae35c
 
