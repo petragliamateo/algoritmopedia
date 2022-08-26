@@ -3,7 +3,7 @@ import React from 'react';
 
 function FullScreen({ children, bg }) {
   let { height } = useWindowDimensions();
-  height -= 120;
+  height -= (60 + 45);
   const backgroundColor = bg;
   return (
     <View style={{ height, backgroundColor }}>

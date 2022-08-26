@@ -14,6 +14,7 @@ import { HomeHeader } from '../components';
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
+  const bottomNavHeight = 45;
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="home">
@@ -29,8 +30,8 @@ export default function Navigation() {
         </Stack.Screen>
         <Stack.Screen name="configuration" component={Configuration} />
       </Stack.Navigator>
-      <View style={{ height: 60 }} />
-      <NavbarBottom />
+      <View style={{ height: bottomNavHeight }} />
+      <NavbarBottom height={bottomNavHeight} />
     </NavigationContainer>
   );
 }

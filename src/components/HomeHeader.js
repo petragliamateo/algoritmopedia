@@ -1,8 +1,11 @@
+/* eslint-disable react-native/no-raw-text */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   Image, StyleSheet, View, StatusBar, SafeAreaView,
 } from 'react-native';
+import { RegularText } from '../customComponents/TextComponents';
+
 import algoritmopedia from '../../assets/images/algoritmopediaclaro.png';
 
 function HomeHeader() {
@@ -10,7 +13,7 @@ function HomeHeader() {
     container: {
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
       alignItems: 'center',
       height: 60,
       backgroundColor: '#fff',
@@ -19,7 +22,7 @@ function HomeHeader() {
     },
     image: {
       width: 60,
-      height: 50,
+      height: 60,
     },
   });
 
@@ -31,6 +34,7 @@ function HomeHeader() {
         hidden={false}
       />
       <View style={styles.container}>
+        <RegularText bold>Algoritmopedia</RegularText>
         <Image style={styles.image} source={algoritmopedia} />
       </View>
     </SafeAreaView>

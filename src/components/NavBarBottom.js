@@ -11,9 +11,9 @@ import dotsIcon from '../../assets/icons/three-dots.png';
 import houseStroke from '../../assets/icons/house-door.png';
 import houseFill from '../../assets/icons/house-door-fill.png';
 import searchIcon from '../../assets/icons/searchBlack.png';
-import searchIconFill from '../../assets/icons/search-heart-fill.png';
+import searchIconFill from '../../assets/icons/search-fill.png';
 
-function NavbarBottom() {
+function NavbarBottom({ height }) {
   const [currentScreen, setCurrentScreen] = useState('home');
   const [showMenu, setShowMenu] = useState(false);
   const navigation = useNavigation();
@@ -31,7 +31,7 @@ function NavbarBottom() {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: 60,
+      height,
       backgroundColor: '#fff',
       paddingHorizontal: 35,
       position: 'absolute',
@@ -44,8 +44,8 @@ function NavbarBottom() {
       elevation: 5,
     },
     image: {
-      width: 32,
-      height: 32,
+      width: 30,
+      height: 30,
     },
   });
 
@@ -76,8 +76,6 @@ function NavbarBottom() {
           <Image style={styles.image} source={searchIcon} />
         )}
       </Pressable>
-
-      <View style={styles.image} />
 
       <Pressable
         onPress={() => setShowMenu((prev) => !prev)}

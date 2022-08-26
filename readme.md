@@ -1,6 +1,6 @@
 apk: https://expo.dev/artifacts/dd4c6fa1-dcb6-4f78-8f7a-37a4432ea8f8
 
-aab: https://expo.dev/artifacts/c7e09786-ed2b-4ba9-a245-6222d48ae35c
+aab: https://expo.dev/artifacts/2fa81df9-3dc6-4863-b198-34a8187a6435
 
 bug: como calcular la media geometrica. Las img son ecuaciones, no son tipo png, gif, etc.
 

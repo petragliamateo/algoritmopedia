@@ -8,8 +8,7 @@ import { Title, Linked } from '../customComponents/TextComponents';
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 35,
-    paddingHorizontal: 15,
+    padding: 15,
     height: '100%',
     display: 'flex',
     justifyContent: 'space-evenly',
