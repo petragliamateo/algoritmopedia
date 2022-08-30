@@ -4,7 +4,9 @@ import React from 'react';
 import { ActivityIndicator, TouchableOpacity } from 'react-native';
 import { RegularText } from './TextComponents';
 
-export default function Buttoncito({ onPress, title, color = '#2F7EC8' }) {
+export default function Buttoncito({
+  onPress, title, color = '#2F7EC8', style,
+}) {
   const [loading, setLoading] = React.useState(false);
   const loadData = async () => {
     setLoading(true);
@@ -24,6 +26,7 @@ export default function Buttoncito({ onPress, title, color = '#2F7EC8' }) {
     shadowRadius: 5,
     shadowOpacity: 1.0,
     elevation: 5,
+    ...style,
   };
   return (
     <TouchableOpacity style={contStyle} onPress={loadData} activeOpacity={0.4}>

@@ -11,14 +11,14 @@ import { FullScreen } from '../components';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 function Home() {
-  const { algoritmos } = React.useContext(AlgoritmosContext);
+  const { algoritmos, reloadData } = React.useContext(AlgoritmosContext);
   // Ordenar algoritmos por fecha
   const lastest = algoritmos.slice(algoritmos.length - 3, algoritmos.length);
   const color = '#2F7EC8';
   return (
     <ScrollView>
       <FullScreen>
-        <MainScreen />
+        <MainScreen reloadData={reloadData} />
       </FullScreen>
 
       <FullScreen bg={color}>

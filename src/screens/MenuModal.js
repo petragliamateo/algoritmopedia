@@ -2,9 +2,9 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
-  Pressable, ScrollView, StyleSheet, Text,
+  Pressable, ScrollView, StyleSheet,
 } from 'react-native';
-import { Linked } from '../customComponents/TextComponents';
+import { Linked, RegularText } from '../customComponents/TextComponents';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 const styles = StyleSheet.create({
@@ -31,7 +31,7 @@ function MenuModal({ setShowMenu }) {
   return (
     <ScrollView style={styles.container}>
       <Pressable style={styles.items} onPress={() => setShowMenu((p) => !p)}>
-        <Linked><Text>X</Text></Linked>
+        <RegularText bold>X</RegularText>
       </Pressable>
 
       <Pressable
@@ -53,9 +53,9 @@ function MenuModal({ setShowMenu }) {
 
       <Pressable
         style={styles.items}
-        onPress={() => navigateAndClose('configuration')}
+        onPress={() => navigateAndClose('Configuración')}
       >
-        <Linked>Configuracion</Linked>
+        <Linked>Configuración</Linked>
       </Pressable>
     </ScrollView>
   );

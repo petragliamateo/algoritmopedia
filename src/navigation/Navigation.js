@@ -28,7 +28,7 @@ export default function Navigation() {
         <Stack.Screen name="allAlgoritmos" options={{ header: () => null }}>
           {(props) => <AllAlgoritmos props={props.route.params} />}
         </Stack.Screen>
-        <Stack.Screen name="configuration" component={Configuration} />
+        <Stack.Screen name="Configuración" component={Configuration} />
       </Stack.Navigator>
       <View style={{ height: bottomNavHeight }} />
       <NavbarBottom height={bottomNavHeight} />
