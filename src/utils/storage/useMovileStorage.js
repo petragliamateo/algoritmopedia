@@ -48,7 +48,7 @@ export default function useMovileStorage() {
         setAlgoritmosData(algData);
       } else {
         Alert.alert(
-          'Matias dice:',
+          'Aviso:',
           'No se han encontrado datos, desea cargarlos?',
           [
             { text: 'cancel', style: 'cancel' },

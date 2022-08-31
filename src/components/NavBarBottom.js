@@ -7,7 +7,8 @@ import { useNavigation, useNavigationState } from '@react-navigation/native';
 
 import MenuModal from '../screens/MenuModal';
 
-import dotsIcon from '../../assets/icons/three-dots.png';
+import gear from '../../assets/icons/gear.png';
+import gearFill from '../../assets/icons/gear-fill.png';
 import houseStroke from '../../assets/icons/house-door.png';
 import houseFill from '../../assets/icons/house-door-fill.png';
 import searchIcon from '../../assets/icons/bookmark.png';
@@ -67,7 +68,7 @@ function NavbarBottom({ height }) {
       <Pressable
         onPress={() => {
           setCurrentScreen('allAlgoritmos');
-          navigation.navigate('allAlgoritmos');
+          navigation.navigate('allAlgoritmos', { saved: [] });
         }}
       >
         {currentScreen === 'allAlgoritmos' ? (
@@ -78,10 +79,18 @@ function NavbarBottom({ height }) {
       </Pressable>
 
       <Pressable
-        onPress={() => navigation.navigate('Configuración')}
+        onPress={() => {
+          setCurrentScreen('Configuración');
+          navigation.navigate('Configuración');
+        }}
       >
-        <Image style={styles.image} source={dotsIcon} />
+        {currentScreen === 'Configuración' ? (
+          <Image style={styles.image} source={gearFill} />
+        ) : (
+          <Image style={styles.image} source={gear} />
+        )}
       </Pressable>
+
       <Modal
         visible={showMenu}
         onRequestClose={() => setShowMenu((prev) => !prev)}

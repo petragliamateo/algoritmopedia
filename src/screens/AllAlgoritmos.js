@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-native/no-raw-text */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   ScrollView, View, Pressable, StyleSheet,
 } from 'react-native';
@@ -39,15 +39,22 @@ const styles = StyleSheet.create({
   },
 });
 
-function AllAlgoritmos({ props }) {
+function AllAlgoritmos({ props = { term: '', saved: null } }) {
+  const { saved } = props;
   const [searchTerm, setSearchTerm] = useState(props ? props.term : '');
+  const [filtered, setFiltered] = useState([]);
   const navigation = useNavigation();
   const { algoritmos } = useContext(AlgoritmosContext);
   // Algoritmo de busqueda:
-  const filtered = algoritmos.filter((alg) => (
-    alg.post_title.toLowerCase()
-      .includes(searchTerm.toLowerCase())
-  ));
+  useEffect(() => {
+    setFiltered(algoritmos.filter((alg) => (
+      alg.post_title.toLowerCase()
+        .includes(searchTerm.toLowerCase())
+    )));
+    if (saved) {
+      setFiltered((prev) => prev.filter((a) => saved.includes(a.name)));
+    }
+  }, [searchTerm]);
   return (
     <ScrollView stickyHeaderIndices={[0]}>
       <View style={styles.search}>
