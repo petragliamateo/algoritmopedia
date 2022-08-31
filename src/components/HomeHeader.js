@@ -2,13 +2,17 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  Image, StyleSheet, View, StatusBar, SafeAreaView,
+  Image, StyleSheet, View, StatusBar, SafeAreaView, Pressable,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { RegularText } from '../customComponents/TextComponents';
 
 import algoritmopedia from '../../assets/images/algoritmopediaclaro.png';
+import searchIcon from '../../assets/icons/searchBlack.png';
 
 function HomeHeader() {
+  const navigation = useNavigation();
+
   const styles = StyleSheet.create({
     container: {
       display: 'flex',
@@ -21,8 +25,14 @@ function HomeHeader() {
       shadowRadius: 2,
     },
     image: {
+      width: 30,
+      height: 30,
+    },
+    spaced: {
       width: 60,
       height: 60,
+      alignItems: 'center',
+      justifyContent: 'center',
     },
   });
 
@@ -35,7 +45,11 @@ function HomeHeader() {
       />
       <View style={styles.container}>
         <RegularText bold>Algoritmopedia</RegularText>
-        <Image style={styles.image} source={algoritmopedia} />
+
+        <Pressable onPress={() => navigation.navigate('allAlgoritmos')}>
+          <Image style={styles.image} source={searchIcon} />
+        </Pressable>
+
       </View>
     </SafeAreaView>
   );

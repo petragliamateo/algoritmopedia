@@ -39,7 +39,6 @@ function Main({ reloadData }) {
           <Buttoncito onPress={reloadData} title="CARGAR NUEVOS ALGORITMOS" />
         </View>
       </View>
-
     </View>
   );
 }

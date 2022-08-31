@@ -10,8 +10,8 @@ import MenuModal from '../screens/MenuModal';
 import dotsIcon from '../../assets/icons/three-dots.png';
 import houseStroke from '../../assets/icons/house-door.png';
 import houseFill from '../../assets/icons/house-door-fill.png';
-import searchIcon from '../../assets/icons/searchBlack.png';
-import searchIconFill from '../../assets/icons/search-fill.png';
+import searchIcon from '../../assets/icons/bookmark.png';
+import searchIconFill from '../../assets/icons/bookmark-fill.png';
 
 function NavbarBottom({ height }) {
   const [currentScreen, setCurrentScreen] = useState('home');
@@ -78,7 +78,7 @@ function NavbarBottom({ height }) {
       </Pressable>
 
       <Pressable
-        onPress={() => setShowMenu((prev) => !prev)}
+        onPress={() => navigation.navigate('Configuración')}
       >
         <Image style={styles.image} source={dotsIcon} />
       </Pressable>
