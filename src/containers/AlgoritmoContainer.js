@@ -3,6 +3,7 @@ import {
   View, StyleSheet,
 } from 'react-native';
 import Algoritmo from '../components/Algoritmo';
+import SaveButton from '../components/SaveButton';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 import { Title } from '../customComponents/TextComponents';
 
@@ -27,6 +28,7 @@ function AlgoritmoContainer({ algoritmoNames }) {
         .map((alg) => (
           <View style={styles.algItem} key={alg.post_date}>
             <Title>{alg.post_title}</Title>
+            <SaveButton name={alg.post_name} />
             <Algoritmo algoritmo={alg.post_content} />
           </View>
         ))}
