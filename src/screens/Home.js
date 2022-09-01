@@ -17,7 +17,7 @@ function Home() {
   const color = '#2F7EC8';
   return (
     <ScrollView>
-      <FullScreen deltaHeight={10}>
+      <FullScreen deltaHeight={15}>
         <MainScreen reloadData={reloadData} />
       </FullScreen>
 

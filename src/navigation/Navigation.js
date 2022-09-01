@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { View } from 'react-native';
 
 import {
-  Home, Categorias, AlgoritmoScreen, AllAlgoritmos, Configuration,
+  Home, Categorias, AlgoritmoScreen, AllAlgoritmos, Configuration, AlgoritmosSaved,
 } from '../screens';
 import NavbarBottom from '../components/NavBarBottom';
 import { HomeHeader } from '../components';
@@ -29,6 +29,9 @@ export default function Navigation() {
           {(props) => <AllAlgoritmos props={props.route.params} />}
         </Stack.Screen>
         <Stack.Screen name="Configuración" component={Configuration} />
+        <Stack.Screen name="AlgoritmosSaved" options={{ headerTitle: 'Guardados' }}>
+          {(props) => <AlgoritmosSaved props={props.route.params} />}
+        </Stack.Screen>
       </Stack.Navigator>
       <View style={{ height: bottomNavHeight }} />
       <NavbarBottom height={bottomNavHeight} />

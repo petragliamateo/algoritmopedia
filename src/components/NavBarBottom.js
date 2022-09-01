@@ -54,7 +54,6 @@ function NavbarBottom({ height }) {
     <View style={styles.container}>
       <Pressable
         onPress={() => {
-          setCurrentScreen('home');
           navigation.navigate('home');
         }}
       >
@@ -67,11 +66,10 @@ function NavbarBottom({ height }) {
 
       <Pressable
         onPress={() => {
-          setCurrentScreen('allAlgoritmos');
-          navigation.navigate('allAlgoritmos', { saved: [] });
+          navigation.navigate('AlgoritmosSaved');
         }}
       >
-        {currentScreen === 'allAlgoritmos' ? (
+        {currentScreen === 'AlgoritmosSaved' ? (
           <Image style={styles.image} source={searchIconFill} />
         ) : (
           <Image style={styles.image} source={searchIcon} />
@@ -80,7 +78,6 @@ function NavbarBottom({ height }) {
 
       <Pressable
         onPress={() => {
-          setCurrentScreen('Configuración');
           navigation.navigate('Configuración');
         }}
       >

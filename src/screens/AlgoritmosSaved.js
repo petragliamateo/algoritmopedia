@@ -6,8 +6,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { Linked } from '../customComponents/TextComponents';
-import { Search } from '../components';
+import { Linked, Title } from '../customComponents/TextComponents';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
 
 const styles = StyleSheet.create({
@@ -26,42 +25,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     margin: 10,
   },
-  search: {
-    padding: 15,
-    backgroundColor: '#fff',
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
-    shadowColor: 'black',
-    shadowOffset: { width: 0, height: 3 },
-    shadowRadius: 5,
-    shadowOpacity: 1.0,
-    elevation: 5,
-  },
 });
 
-function AllAlgoritmos({ props = { term: '' } }) {
-  const { term } = props;
-  const [searchTerm, setSearchTerm] = useState(term || '');
-  const [filtered, setFiltered] = useState([]);
+function AllAlgoritmos() {
   const navigation = useNavigation();
-  const { algoritmos } = useContext(AlgoritmosContext);
-  // Algoritmo de busqueda:
-  useEffect(() => {
-    setFiltered(() => {
-      let filter = [];
-      filter = algoritmos.filter((alg) => (
-        alg.post_title.toLowerCase()
-          .includes(searchTerm.toLowerCase())
-      ));
-      return filter;
-    });
-  }, [searchTerm]);
+  const { algoritmos, saved } = useContext(AlgoritmosContext);
+  if (!saved || saved === []) {
+    return (
+      <Title>No se encontraron algoritmos guardados, presiona en el marcador para añadirlos</Title>
+    );
+  }
+  const filtered = algoritmos.filter((alg) => saved.includes(alg.post_name));
   return (
-    <ScrollView stickyHeaderIndices={[0]}>
-      <View style={styles.search}>
-        <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
-      </View>
-
+    <ScrollView>
       <View style={styles.container}>
         <View style={styles.itemsContainer}>
           {filtered.map((alg) => (
