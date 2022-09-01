@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-native/no-raw-text */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import {
   ScrollView, View, Pressable, StyleSheet,
 } from 'react-native';
@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Linked, Title } from '../customComponents/TextComponents';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
+import useSavedAlgoritmos from '../utils/storage/useSavedAlgoritmos';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,13 +30,15 @@ const styles = StyleSheet.create({
 
 function AllAlgoritmos() {
   const navigation = useNavigation();
-  const { algoritmos, saved } = useContext(AlgoritmosContext);
-  if (!saved || saved === []) {
+  const { algoritmos } = useContext(AlgoritmosContext);
+  const { favorites } = useSavedAlgoritmos();
+  console.log(favorites);
+  if (!favorites || favorites.length === 0) {
     return (
       <Title>No se encontraron algoritmos guardados, presiona en el marcador para añadirlos</Title>
     );
   }
-  const filtered = algoritmos.filter((alg) => saved.includes(alg.post_name));
+  const filtered = algoritmos.filter((alg) => favorites.includes(alg.post_name));
   return (
     <ScrollView>
       <View style={styles.container}>

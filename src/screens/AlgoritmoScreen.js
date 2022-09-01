@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Linked, Title } from '../customComponents/TextComponents';
 import Algoritmo from '../components/Algoritmo';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
+import useSavedAlgoritmos from '../utils/storage/useSavedAlgoritmos';
 
 function AlgoritmoScreen({ props }) {
   const { algoritmos } = React.useContext(AlgoritmosContext);
@@ -17,10 +18,14 @@ function AlgoritmoScreen({ props }) {
     next: algoritmos[index + 1], prev: algoritmos[index - 1],
   };
   navigation.setOptions({ title: algoritmo.post_title });
+  const { addFavorite } = useSavedAlgoritmos();
 
   return (
     <ScrollView>
       <Title>{algoritmo.post_title}</Title>
+      <Pressable onPress={() => addFavorite(algoritmo.post_name)}>
+        <Linked>Guardar</Linked>
+      </Pressable>
 
       <Algoritmo algoritmo={algoritmo.post_content} guid={algoritmo.guid} />
 
