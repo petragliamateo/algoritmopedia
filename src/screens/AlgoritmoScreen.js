@@ -18,14 +18,20 @@ function AlgoritmoScreen({ props }) {
     next: algoritmos[index + 1], prev: algoritmos[index - 1],
   };
   navigation.setOptions({ title: algoritmo.post_title });
-  const { addFavorite } = useSavedAlgoritmos();
+  const { addFavorite, removeFavorite, favorites } = useSavedAlgoritmos();
 
   return (
     <ScrollView>
       <Title>{algoritmo.post_title}</Title>
-      <Pressable onPress={() => addFavorite(algoritmo.post_name)}>
-        <Linked>Guardar</Linked>
-      </Pressable>
+      {favorites.includes(algoritmo.post_name) ? (
+        <Pressable onPress={() => removeFavorite(algoritmo.post_name)}>
+          <Linked>Borrar</Linked>
+        </Pressable>
+      ) : (
+        <Pressable onPress={() => addFavorite(algoritmo.post_name)}>
+          <Linked>Guardar</Linked>
+        </Pressable>
+      )}
 
       <Algoritmo algoritmo={algoritmo.post_content} guid={algoritmo.guid} />
 

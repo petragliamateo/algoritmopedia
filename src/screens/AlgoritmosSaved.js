@@ -32,7 +32,6 @@ function AllAlgoritmos() {
   const navigation = useNavigation();
   const { algoritmos } = useContext(AlgoritmosContext);
   const { favorites } = useSavedAlgoritmos();
-  console.log(favorites);
   if (!favorites || favorites.length === 0) {
     return (
       <Title>No se encontraron algoritmos guardados, presiona en el marcador para añadirlos</Title>

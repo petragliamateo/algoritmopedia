@@ -23,8 +23,7 @@ export default function useSavedAlgoritmos() {
   };
   const addFavorite = async (name) => {
     let saved = await getData();
-    console.log(saved);
-    if (saved) {
+    if (!saved) {
       saved = [];
     }
     saved = saved.concat(name);
@@ -41,9 +40,9 @@ export default function useSavedAlgoritmos() {
     setFavorites(saved);
   };
   React.useEffect(() => {
+    // console.log('listener');
     const listener = async () => {
       const saved = await getData();
-      console.log('listener');
       if (saved) {
         setFavorites(saved);
         return;

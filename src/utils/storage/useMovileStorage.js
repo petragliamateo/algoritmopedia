@@ -6,11 +6,13 @@ import {
   getCategories, getInfo, getPages, getPosts,
 } from '../../services/algoritmos';
 import downloadAllImages from './downloadAllImages';
+import useSavedAlgoritmos from './useSavedAlgoritmos';
 
 export default function useMovileStorage() {
   const [algoritmosData, setAlgoritmosData] = React.useState({
     algoritmos: [], categorias: [], pages: [],
   });
+  const { removeAllFavorites } = useSavedAlgoritmos();
 
   const getData = async () => {
     try {
@@ -79,6 +81,7 @@ export default function useMovileStorage() {
   const removeData = async () => {
     try {
       await AsyncStorage.removeItem('@algoritmosData');
+      await removeAllFavorites();
       setAlgoritmosData({
         algoritmos: [], categorias: [], pages: [],
       });
