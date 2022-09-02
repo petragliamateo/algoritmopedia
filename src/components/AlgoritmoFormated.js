@@ -5,6 +5,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
+  Text,
   View,
 } from 'react-native';
 
@@ -19,6 +20,7 @@ function destructuring(obj = { content: '' }, type = '', fullType = '') {
   }
   const allValues = [];
   obj.children.forEach((elm) => {
+    // Childrens:
     allValues.push(destructuring(elm, obj.type, obj.fullType));
   });
   return allValues;
@@ -72,7 +74,7 @@ function typeComponent(content, type, fullType) {
       const path = fileManager.getPath(src);
       return (
         <View key={src}>
-          <AutoImage uri={path} />
+          <AutoImage uri={path} deltaWidth={30} />
           <RegularText style={style}>
             {alt}
             {'\n'}
@@ -106,7 +108,10 @@ function AlgoritmoFormated({ algoritmo }) {
     <View>
       {format(algoritmo).children.map((inc, i) => (
         <View key={i}>
-          {destructuring(inc)}
+          {console.log(inc)}
+          <ViewOrText type={inc.type}>
+            {destructuring(inc)}
+          </ViewOrText>
         </View>
       ))}
     </View>
@@ -114,3 +119,11 @@ function AlgoritmoFormated({ algoritmo }) {
 }
 
 export default AlgoritmoFormated;
+
+function ViewOrText({ children, type = '' }) {
+  const viewTypes = ['figure', 'pre', 'hr', 'blockquote'];
+  if (viewTypes.includes(type)) {
+    return <View>{children}</View>;
+  }
+  return <Text>{children}</Text>;
+}

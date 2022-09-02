@@ -2,9 +2,9 @@
 import React from 'react';
 import { Image, useWindowDimensions } from 'react-native';
 
-export default function RemoteImage({ uri, desiredWidth = null }) {
+export default function RemoteImage({ uri, desiredWidth = null, deltaWidth = 0 }) {
   const [desiredHeight, setDesiredHeight] = React.useState(0);
-  const windowWidth = useWindowDimensions().width;
+  const windowWidth = useWindowDimensions().width - deltaWidth;
   const finalWidth = desiredWidth || windowWidth;
 
   Image.getSize(uri, (width, height) => {

@@ -5,7 +5,9 @@ export default function format(html = '') {
   const noComment = removeCommentTags(noFooter);
   const noAutoClosed = removeAutoclosedTags(noComment);
   const htmls = transformToJSX(noAutoClosed);
-  return formattingTag(htmls);
+  const formatting = formattingTag(htmls);
+  // console.log(formatting);
+  return formatting;
 }
 
 export function transformToJSX(html = '') {
