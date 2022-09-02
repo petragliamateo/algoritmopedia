@@ -82,7 +82,7 @@ function typeComponent(content, type, fullType) {
         </View>
       );
     case 'hr':
-      // Linea
+      style = { borderTopWidth: 1, borderColor: '#777' };
       break;
     case 'li':
       style = { paddingLeft: 5, marginLeft: 5, marginBottom: 5 };
@@ -108,7 +108,6 @@ function AlgoritmoFormated({ algoritmo }) {
     <View>
       {format(algoritmo).children.map((inc, i) => (
         <View key={i}>
-          {console.log(inc)}
           <ViewOrText type={inc.type}>
             {destructuring(inc)}
           </ViewOrText>
