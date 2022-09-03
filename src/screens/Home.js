@@ -27,7 +27,7 @@ function Home() {
         animationType="slide"
         transparent
       >
-        <SlidersInitial />
+        <SlidersInitial setShowSliders={setShowSliders} />
       </Modal>
 
       <FullScreen deltaHeight={15}>
