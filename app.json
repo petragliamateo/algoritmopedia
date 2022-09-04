@@ -18,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.algoritmopedia.algoritmopedia"
     },
     "android": {
       "package": "com.algoritmopedia.algoritmopedia",
