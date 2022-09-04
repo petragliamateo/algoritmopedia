@@ -5,7 +5,7 @@ import { ActivityIndicator, TouchableOpacity } from 'react-native';
 import { RegularText } from './TextComponents';
 
 export default function Buttoncito({
-  onPress, title, color = '#2F7EC8', style,
+  onPress, title, color = '#2F7EC8', style, textColor = '#ffffff',
 }) {
   const [loading, setLoading] = React.useState(false);
   const loadData = async () => {
@@ -33,7 +33,7 @@ export default function Buttoncito({
       {loading ? (
         <ActivityIndicator animating={loading} size="large" />
       ) : (
-        <RegularText style={{ color: '#fff', fontSize: 15 }} bold>
+        <RegularText style={{ color: textColor, fontSize: 15 }} bold>
           {title}
         </RegularText>
       )}

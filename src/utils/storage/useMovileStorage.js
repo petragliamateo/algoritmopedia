@@ -6,13 +6,16 @@ import {
   getCategories, getInfo, getPages, getPosts,
 } from '../../services/algoritmos';
 import downloadAllImages from './downloadAllImages';
+import useFirstTime from './useFirstTime';
 import useSavedAlgoritmos from './useSavedAlgoritmos';
 
 export default function useMovileStorage() {
   const [algoritmosData, setAlgoritmosData] = React.useState({
     algoritmos: [], categorias: [], pages: [],
   });
+  const [reloadListener, setReloadListener] = React.useState(false);
   const { removeAllFavorites } = useSavedAlgoritmos();
+  const { removeFirstTimeData, firstTime } = useFirstTime();
 
   const getData = async () => {
     try {
@@ -50,7 +53,7 @@ export default function useMovileStorage() {
         setAlgoritmosData(algData);
       } else {
         Alert.alert(
-          'Aviso:',
+          'Matias dice:',
           'No se han encontrado datos, desea cargarlos?',
           [
             { text: 'cancel', style: 'cancel' },
@@ -74,14 +77,17 @@ export default function useMovileStorage() {
         ],
       );
     };
-    listener();
+
+    if (firstTime === 'no') listener();
+    console.log(firstTime);
 
     return () => listener();
-  }, []);
+  }, [reloadListener]);
   const removeData = async () => {
     try {
       await AsyncStorage.removeItem('@algoritmosData');
       await removeAllFavorites();
+      await removeFirstTimeData();
       setAlgoritmosData({
         algoritmos: [], categorias: [], pages: [],
       });
@@ -91,5 +97,7 @@ export default function useMovileStorage() {
     }
   };
 
-  return { ...algoritmosData, removeData, reloadData };
+  return {
+    ...algoritmosData, removeData, reloadData, setReloadListener,
+  };
 }

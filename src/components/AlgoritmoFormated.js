@@ -41,7 +41,7 @@ function typeComponent(content, type, fullType) {
       style = { color: 'black' };
       break;
     case 'code':
-      style = { color: 'green', backgroundColor: 'black', padding: 0 };
+      style = { color: '#35C82F', backgroundColor: 'black', padding: 0 };
       return <RegularText key={content} style={style} bold={bold}>{content}</RegularText>;
     case 'strong':
       style = { color: 'black' };

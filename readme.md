@@ -16,7 +16,7 @@ como calcular la media geometrica. Las img son ecuaciones, no son tipo png, gif,
 pasar el formateo a la parte del backend? --> Optimizar la App.
 
 **Download:**<br>
-apk: https://expo.dev/artifacts/b47810ca-ddc4-4d22-bafb-3c2e2b1bd649
+apk: https://expo.dev/artifacts/a00b1fcb-1003-4141-bf32-e8c73cb83281
 
 aab: https://expo.dev/artifacts/2fa81df9-3dc6-4863-b198-34a8187a6435
 

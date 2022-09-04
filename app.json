@@ -2,7 +2,7 @@
   "expo": {
     "name": "Algoritmopedia",
     "slug": "algoritmopediaApp",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/adaptive-icon.png",
     "userInterfaceStyle": "light",

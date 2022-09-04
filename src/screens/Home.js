@@ -1,35 +1,22 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
-  Modal,
   ScrollView,
 } from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   MainScreen, Categorias, UltimosAlg, AportarAlg,
 } from '../containers';
 import { FullScreen } from '../components';
 import AlgoritmosContext from '../contexts/AlgoritmosContext';
-import SlidersInitial from '../components/SlidersInitial';
 
 function Home() {
-  const { algoritmos, reloadData } = React.useContext(AlgoritmosContext);
-  const [showSliders, setShowSliders] = useState(true);
+  const { algoritmos, reloadData, setReloadListener } = React.useContext(AlgoritmosContext);
   // Ordenar algoritmos por fecha
   const lastest = algoritmos.slice(algoritmos.length - 3, algoritmos.length);
   const color = '#2F7EC8';
   return (
-    <ScrollView>
-
-      <Modal
-        visible={showSliders}
-        onRequestClose={() => setShowSliders((prev) => !prev)}
-        animationType="slide"
-        transparent
-      >
-        <SlidersInitial setShowSliders={setShowSliders} />
-      </Modal>
-
+    <ScrollView onLayout={() => setReloadListener(true)}>
       <FullScreen deltaHeight={15}>
         <MainScreen reloadData={reloadData} />
       </FullScreen>
