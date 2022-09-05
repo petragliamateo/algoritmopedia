@@ -13,6 +13,7 @@ import { Linked, RegularText, Title } from '../customComponents/TextComponents';
 import AutoImage from '../customComponents/AutoImage';
 import format from '../helpers/formatHtml';
 import fileManager from '../utils/storage/fileManager';
+import LatextToImg from '../customComponents/LatextToImg';
 
 function destructuring(obj = { content: '' }, type = '', fullType = '') {
   if (obj.content || obj.content === '') {
@@ -70,15 +71,22 @@ function typeComponent(content, type, fullType) {
       i2 = fullType.indexOf('"', i1 + 5);
       if (i1 === -1) break;
       const src = fullType.slice(i1 + 5, i2);
+
+      const termination = src.slice(src.lastIndexOf('.') + 1);
+      const supportedTerminations = ['png', 'jpg', 'gif', 'svg'];
+      if (!supportedTerminations.includes(termination)) {
+        return (
+          <View key={src}>
+            <LatextToImg latex={`$${alt}$`} />
+          </View>
+        );
+      }
+
       // Las imagenes se descargan, getPath devuelve el path al archivo segun su src:
       const path = fileManager.getPath(src);
       return (
         <View key={src}>
           <AutoImage uri={path} deltaWidth={30} />
-          <RegularText style={style}>
-            {alt}
-            {'\n'}
-          </RegularText>
         </View>
       );
     case 'hr':
@@ -108,7 +116,7 @@ function AlgoritmoFormated({ algoritmo }) {
     <View>
       {format(algoritmo).children.map((inc, i) => (
         <View key={i}>
-          <ViewOrText type={inc.type}>
+          <ViewOrText type={inc.type} obj={inc}>
             {destructuring(inc)}
           </ViewOrText>
         </View>
@@ -119,10 +127,23 @@ function AlgoritmoFormated({ algoritmo }) {
 
 export default AlgoritmoFormated;
 
-function ViewOrText({ children, type = '' }) {
+function ViewOrText({ children, type = '', obj }) {
   const viewTypes = ['figure', 'pre', 'hr', 'blockquote'];
-  if (viewTypes.includes(type)) {
+  if (viewTypes.includes(type) || searchImg(obj)) {
     return <View>{children}</View>;
   }
   return <Text>{children}</Text>;
+}
+
+function searchImg(obj) {
+  // retorno true si el objeto llega a tener un children img
+  // false en caso contrario
+  // Esta funcion es de orden 1, si un children de children tiene una img no cuenta.
+  let returned = false;
+  if (obj.children) {
+    obj.children.forEach((ch) => {
+      if (ch.type === 'img') returned = true;
+    });
+  }
+  return returned;
 }
