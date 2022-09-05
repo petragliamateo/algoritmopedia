@@ -1,8 +1,9 @@
-<img src="https://i0.wp.com/algoritmopedia.org/wp-content/uploads/2022/06/algoritmopediaclaro.png?w=951&ssl=1" alt="Algoritmopedia isotipo" width="200px"/>
+  <img src="https://i0.wp.com/algoritmopedia.org/wp-content/uploads/2022/06/algoritmopediaclaro.png?w=951&ssl=1" alt="Algoritmopedia isotipo" width="200px"/>
 
-## Algoritmopedia Mobile - Algorithms in community
-**Repository of algorithms in community oriented to education.** <br>
-**Web:** https://algoritmopedia.org/
+  ## Algoritmopedia Mobile - Algorithms in community
+  **Repository of algorithms in community oriented to education.** <br>
+  **Web:** https://algoritmopedia.org/ <br>
+  ![GitHub Repo stars](https://img.shields.io/github/stars/petragliamateo/algoritmopedia?style=social)
 ---
 
 **Status:** Beta
@@ -12,7 +13,7 @@
 
 **Bugs:**<br>
 
-**In progress**<br>
+**In progress:**<br>
 pasar el formateo a la parte del backend? --> Optimizar la App.
 
 **Download:**<br>
