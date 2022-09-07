@@ -16,18 +16,6 @@ import format from '../helpers/formatHtml';
 import fileManager from '../utils/storage/fileManager';
 import LatextToImg from '../customComponents/LatextToImg';
 
-function destructuring(obj = { content: '' }, type = '', fullType = '') {
-  if (obj.content || obj.content === '') {
-    return typeComponent(obj.content, type, fullType);
-  }
-  const allValues = [];
-  obj.children.forEach((elm) => {
-    // Childrens:
-    allValues.push(destructuring(elm, obj.type, obj.fullType));
-  });
-  return allValues;
-}
-
 function typeComponent(content, type, fullType) {
   let style;
   // console.log('FT', fullType);
@@ -116,14 +104,10 @@ function typeComponent(content, type, fullType) {
 
 function AlgoritmoFormated({ algoritmo }) {
   // Que los objetos retornen dentro de un Text hace que sigan la linea.
-  console.log(format(algoritmo));
+  // console.log(format(algoritmo));
   return (
     <View>
-      {format(algoritmo).children.map((inc, i) => (
-        <ViewOrText type={inc.type} obj={inc} key={i}>
-          {destructuring(inc)}
-        </ViewOrText>
-      ))}
+      {mapper(format(algoritmo).children)}
     </View>
   );
 }
@@ -131,14 +115,14 @@ function AlgoritmoFormated({ algoritmo }) {
 export default AlgoritmoFormated;
 
 function ViewOrText({ children, type = '', obj }) {
-  const viewTypes = ['figure', 'pre', 'hr', 'blockquote'];
+  const viewTypes = ['figure', 'pre', 'hr', 'blockquote', 'code', 'img'];
   if (viewTypes.includes(type) || searchImg(obj)) {
     return <View>{children}</View>;
   }
   return <Text>{children}</Text>;
 }
 
-function searchImg(obj) {
+function searchImg(obj = {}) {
   // retorno true si el objeto llega a tener un children img
   // false en caso contrario
   // Esta funcion es de orden 1, si un children de children tiene una img no cuenta.
@@ -149,4 +133,27 @@ function searchImg(obj) {
     });
   }
   return returned;
+}
+
+function mapper(childArray = [], parentType = '', fullType = '') {
+  // Old destructuring
+  const childMap = [];
+  if (childArray) {
+    childArray.forEach((ch) => {
+      if (ch.content || ch.content === '') {
+        // Si existe content:
+        childMap.push(typeComponent(ch.content, parentType, fullType));
+      }
+      if (ch.children) {
+        // Si existe children --> tiene childrens:
+        childMap.push(
+          <ViewOrText type={ch.type} obj={ch}>
+            {mapper(ch.children, ch.type, ch.fullType)}
+          </ViewOrText>,
+        );
+      }
+    });
+  }
+
+  return childMap;
 }
