@@ -5,6 +5,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
+  ScrollView,
   Text,
   View,
 } from 'react-native';
@@ -43,7 +44,11 @@ function typeComponent(content, type, fullType) {
       break;
     case 'code':
       style = { color: '#35C82F', backgroundColor: 'black', padding: 0 };
-      return <RegularText key={content} style={style} bold={bold}>{content}</RegularText>;
+      return (
+        <ScrollView horizontal>
+          <RegularText key={content} style={style} bold={bold}>{content}</RegularText>
+        </ScrollView>
+      );
     case 'strong':
       style = { color: 'black' };
       bold = true;
@@ -111,15 +116,13 @@ function typeComponent(content, type, fullType) {
 
 function AlgoritmoFormated({ algoritmo }) {
   // Que los objetos retornen dentro de un Text hace que sigan la linea.
-  // console.log(format(algoritmo));
+  console.log(format(algoritmo));
   return (
     <View>
       {format(algoritmo).children.map((inc, i) => (
-        <View key={i}>
-          <ViewOrText type={inc.type} obj={inc}>
-            {destructuring(inc)}
-          </ViewOrText>
-        </View>
+        <ViewOrText type={inc.type} obj={inc} key={i}>
+          {destructuring(inc)}
+        </ViewOrText>
       ))}
     </View>
   );
