@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-native/no-raw-text */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Pressable, ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -17,7 +17,14 @@ function AlgoritmoScreen({ props }) {
   const alg = {
     next: algoritmos[index + 1], prev: algoritmos[index - 1],
   };
-  navigation.setOptions({ title: algoritmo.post_title });
+
+  useEffect(() => {
+    const setOptions = () => {
+      navigation.setOptions({ title: algoritmo.post_title });
+    };
+    setOptions();
+    return () => setOptions();
+  }, []);
 
   return (
     <ScrollView>

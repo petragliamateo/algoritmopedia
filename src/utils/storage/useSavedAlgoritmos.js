@@ -50,7 +50,6 @@ export default function useSavedAlgoritmos() {
       setFavorites([]);
     };
     listener();
-    return () => listener();
   }, []);
   const removeAllFavorites = async () => {
     try {

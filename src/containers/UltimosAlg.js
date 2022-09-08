@@ -19,9 +19,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column-reverse',
   },
   item: {
-    padding: 20,
+    padding: 15,
     borderWidth: 1,
-    margin: 10,
+    marginHorizontal: 10,
+    marginVertical: 5,
   },
 });
 

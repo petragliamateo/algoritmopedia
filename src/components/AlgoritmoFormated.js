@@ -33,7 +33,7 @@ function typeComponent(content, type, fullType) {
     case 'code':
       style = { color: '#35C82F', backgroundColor: 'black', padding: 0 };
       return (
-        <ScrollView horizontal>
+        <ScrollView horizontal key={content}>
           <RegularText key={content} style={style} bold={bold}>{content}</RegularText>
         </ScrollView>
       );
@@ -139,7 +139,7 @@ function mapper(childArray = [], parentType = '', fullType = '') {
   // Old destructuring
   const childMap = [];
   if (childArray) {
-    childArray.forEach((ch) => {
+    childArray.forEach((ch, i) => {
       if (ch.content || ch.content === '') {
         // Si existe content:
         childMap.push(typeComponent(ch.content, parentType, fullType));
@@ -147,7 +147,7 @@ function mapper(childArray = [], parentType = '', fullType = '') {
       if (ch.children) {
         // Si existe children --> tiene childrens:
         childMap.push(
-          <ViewOrText type={ch.type} obj={ch}>
+          <ViewOrText type={ch.type} obj={ch} key={i}>
             {mapper(ch.children, ch.type, ch.fullType)}
           </ViewOrText>,
         );
