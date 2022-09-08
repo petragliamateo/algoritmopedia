@@ -17,7 +17,7 @@
 pasar el formateo a la parte del backend? --> Optimizar la App.
 
 **Download:**<br>
-apk: https://expo.dev/artifacts/15520a47-1058-4512-bdcf-a261dcf8b70c
+apk: https://expo.dev/artifacts/1fbdc7db-5775-4d79-b354-70a8e411039a
 
 aab: https://expo.dev/artifacts/2fa81df9-3dc6-4863-b198-34a8187a6435
 

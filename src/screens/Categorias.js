@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-native/no-raw-text */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -14,7 +14,14 @@ function Categorias({ props }) {
     marginVertical: 10,
     textAlign: 'center',
   };
-  navigation.setOptions({ title: category.name });
+
+  useEffect(() => {
+    const setOptions = () => {
+      navigation.setOptions({ title: category.name });
+    };
+    setOptions();
+    return () => setOptions();
+  }, []);
 
   return (
     <ScrollView>
