@@ -79,7 +79,6 @@ export default function useMovileStorage() {
     };
 
     if (firstTime === 'no') listener();
-    console.log(firstTime);
 
     return () => listener();
   }, [reloadListener]);
